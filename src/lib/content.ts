@@ -15,17 +15,19 @@ export const site = {
   instagram: "@sarya_headspa_opava",
   instagramUrl: "https://www.instagram.com/sarya_headspa_opava/",
   /**
-   * TODO majitelka: doplnit přesný Notino odkaz do .env.local:
-   * NEXT_PUBLIC_BOOKING_URL=https://...
-   * Bez něj tlačítka „Objednat se“ vedou na kontaktní sekci (#kontakt).
+   * Ověřená stránka salonu na Notino (9. 11. 2026).
+   * NEXT_PUBLIC_BOOKING_URL ji může přepsat (viz .env.example).
+   * Výchozí URL je ve zdrojáku, aby ji dostal i build GitHub Pages bez env.
    */
-  bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || "#kontakt",
+  bookingUrl:
+    process.env.NEXT_PUBLIC_BOOKING_URL?.trim() ||
+    "https://www.notino.cz/salony/sarya-head-spa_1/",
   cosmetics: "Davines",
   // TODO: doplnit IČO od majitelky — dokud je prázdné, na webu se nezobrazí
   ico: "",
   openingHours: {
-    // TODO: doplnit konkrétní dny a hodiny — dokud je label prázdný, sekce se skryje
-    label: "",
+    // Notino: „Otevřeno dle objednání“. Konkrétní dny a hodiny se nedoplňují.
+    label: "Otevřeno dle objednání",
     days: [] as { day: string; hours: string }[],
   },
 } as const;

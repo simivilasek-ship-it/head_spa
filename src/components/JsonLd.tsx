@@ -29,7 +29,7 @@ export function JsonLd() {
         itemOffered: { "@type": "Service", name: item.name },
       })),
     },
-    // TODO: openingHoursSpecification doplnit, až majitelka potvrdí otevírací dobu
+    // Otevírací doba je „dle objednání“ — bez konkrétních dnů a časů se do schema.org nezapisuje.
   };
 
   const faqPage = {

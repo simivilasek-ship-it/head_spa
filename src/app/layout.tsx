@@ -4,7 +4,15 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { JsonLd } from "@/components/JsonLd";
 import { Preloader } from "@/components/Preloader";
 import { site } from "@/lib/content";
+import { images } from "@/lib/images";
 import "./globals.css";
+
+/** Stejný prefix jako `basePath` ve static exportu (prázdný na kořenové doméně). */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const ogImage = images.gallery.find(
+  (item) => item.src === "/images/gallery-4.jpg",
+);
 
 const serif = Gelasio({
   variable: "--font-gelasio",
@@ -30,8 +38,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   icons: {
-    icon: "/logo.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: `${basePath}/favicon.ico`, sizes: "48x48" },
+      { url: `${basePath}/logo.png`, type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      {
+        url: `${basePath}/apple-touch-icon.png`,
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
   openGraph: {
     title: "Head Spa Opava | Sarya Head Spa",
@@ -41,7 +58,16 @@ export const metadata: Metadata = {
     locale: "cs_CZ",
     type: "website",
     siteName: site.name,
-    // TODO: doplnit OG obrázek 1200×630 ze skutečné fotky salonu
+    images: ogImage
+      ? [
+          {
+            url: ogImage.src,
+            width: 2000,
+            height: 1500,
+            alt: ogImage.alt,
+          },
+        ]
+      : undefined,
   },
 };
 

@@ -4,7 +4,8 @@ import { Footer } from "@/components/Footer";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Ochrana osobních údajů | Sarya Head Spa",
+  // absolute: šablona v layoutu by jinak přidala „| Sarya Head Spa“ podruhé
+  title: { absolute: "Ochrana osobních údajů | Sarya Head Spa" },
   description: "Informace o zpracování osobních údajů v Sarya Head Spa Opava.",
 };
 
