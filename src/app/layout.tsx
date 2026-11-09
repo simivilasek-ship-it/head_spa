@@ -14,7 +14,7 @@ const serif = Gelasio({
 });
 
 const description =
-  "Sarya Head Spa na Ostrožné 8 v Opavě. Masáž hlavy a péče o vlasovou pokožku. Rezervace přes Notino.";
+  "Sarya Head Spa na Ostrožné 8 v Opavě. Mytí, masáž hlavy a péče o pokožku. Rezervace přes Notino.";
 
 export const viewport: Viewport = {
   themeColor: "#34443a",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Head Spa Opava | Sarya Head Spa",
     description:
-      "Head spa v Opavě: Basic, Relax, Man a Keratin Repair. Ostrožná 8.",
+      "Head spa v Opavě na Ostrožné 8. Basic, Relax, Man a Keratin Repair.",
     url: site.url,
     locale: "cs_CZ",
     type: "website",

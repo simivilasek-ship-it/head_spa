@@ -11,7 +11,7 @@ export const site = {
   phoneHref: "tel:+420732735885",
   // TODO majitelka: potvrdit, že na tomto čísle běží WhatsApp — prázdné = tlačítko se skryje
   whatsappNumber: "420732735885",
-  whatsappMessage: "Dobrý den, chtěl/a bych se objednat.",
+  whatsappMessage: "Dobrý den, chtěl/a bych se objednat na head spa.",
   instagram: "@sarya_headspa_opava",
   instagramUrl: "https://www.instagram.com/sarya_headspa_opava/",
   /**
@@ -45,7 +45,7 @@ export const copy = {
     title: "Relax v srdci Opavy",
     highlights: ["Ostrožná 8, Opava", "Rezervace přes Notino", "Kosmetika Davines"],
     subtitle:
-      "Malý salon na Ostrožné. Masáž hlavy, mytí a péče o pokožku, podle toho, co zrovna potřebujete.",
+      "Malý salon na Ostrožné. Mytí, masáž hlavy a péče o pokožku — 60 až 100 minut, podle toho, co zrovna potřebujete.",
     ctaPrimary: "Objednat se",
     ctaSecondary: "Ceník",
   },
@@ -54,22 +54,20 @@ export const copy = {
     title: "O salonu",
     greeting: "Ahoj, já jsem Šárka.",
     paragraphs: [
-      "Jsem zakladatelkou Sarya Head Spa a ráda bych vám trochu přiblížila, jak to celé začalo.",
-      "Vždycky jsem si přála vytvořit něco vlastního. Místo, které bude mít příjemnou atmosféru a kam budou ženy přicházet nejen za péčí o své vlasy, ale také za odpočinkem a chvílí jen pro sebe.",
-      "Sama mám velmi ráda wellness rituály, chvíle klidu a vše, co pomáhá zpomalit a na chvíli vypnout od každodenních povinností. Právě tato osobní záliba mě přivedla k myšlence vytvořit Sarya Head Spa.",
-      "Chtěla jsem spojit to, co mám sama ráda, s péčí o vlasy a pokožku hlavy. Vytvořit prostor, kde se budete cítit příjemně, uvolněně a kde si budete moci dopřát péči, kterou si zasloužíte.",
-      "Je to pro mě nová profesní cesta, na které se neustále učím, vzdělávám a posouvám dál. Záleží mi na tom, aby každá návštěva byla příjemným zážitkem a abyste odcházely nejen s pocitem dobře opečovaných vlasů, ale také s lehčí hlavou a úsměvem.",
-      "Budu se těšit na vaši návštěvu.",
+      "Sarya Head Spa jsem založila proto, že jsem chtěla mít vlastní místo, kam si lidé přijdou odpočinout — ne jen „něco s vlasy“.",
+      "Ráda zpomalím, vypnu a dopřeju si klid. Stejné chvíle jsem chtěla nabídnout i vám: mytí, masáž hlavy a péči o pokožku v malém salonu na Ostrožné.",
+      "Pořád se učím a doladím průběh podle toho, co vám sedí. Chci, abyste odcházeli s lehčí hlavou — a klidně i s úsměvem.",
+      "Budu se těšit, až se zastavíte.",
     ],
   },
   procedures: {
     kicker: "Co nabízíme",
     title: "Procedury a ceník",
-    subtitle: "Čtyři procedury. Liší se délkou a průběhem péče.",
+    subtitle: "Čtyři procedury. Od krátké péče po keratin — liší se hlavně délkou.",
     cta: "Objednat se",
   },
   cosmetics: {
-    body: "Pracujeme s vlasovou kosmetikou Davines.",
+    body: "Pracujeme s kosmetikou Davines.",
   },
   visit: {
     kicker: "Vaše návštěva",
@@ -78,7 +76,7 @@ export const copy = {
   voucher: {
     kicker: "Pro vaše blízké",
     title: "Dárkové poukazy",
-    body: "Poukaz domluvíme po telefonu. Na poukaz napíšeme hodnotu nebo proceduru, kterou chcete darovat.",
+    body: "Poukaz domluvíme po telefonu. Napíšeme na něj hodnotu nebo konkrétní proceduru.",
     cta: "Zavolat",
   },
   faq: {
@@ -88,7 +86,7 @@ export const copy = {
   contact: {
     kicker: "Kde nás najdete",
     title: "Kontakt",
-    body: "Objednejte se přes Notino, zavolejte, nebo napište na Instagram.",
+    body: "Nejjednodušší je rezervace přes Notino. Můžete taky zavolat nebo napsat na Instagram.",
     cta: "Objednat se",
   },
 } as const;
@@ -100,28 +98,28 @@ export const procedures = [
     duration: "60 min",
     price: "1 100 Kč",
     description:
-      "Mytí Davines, masáž pokožky hlavy a výživná péče. Zakončení šetrným vysušením.",
+      "Mytí Davines, masáž pokožky hlavy a výživná kúra. Na konci vlasy šetrně vysuším.",
   },
   {
     name: "Sarya Relax",
     duration: "90 min",
     price: "1 450 Kč",
     description:
-      "Komplexní rituál s trichologickou kamerou, čištěním, masáží a napařováním.",
+      "Delší péče: pohled trichologickou kamerou, čištění, masáž a napařování.",
   },
   {
     name: "Sarya Man",
     duration: "60 min",
     price: "900 Kč",
     description:
-      "Pánský rituál: mytí, masáž pokožky hlavy a péče podle potřeb vlasů.",
+      "Pro muže a kratší vlasy: mytí, masáž pokožky hlavy a péče podle stavu vlasů.",
   },
   {
     name: "Sarya Keratin Repair",
     duration: "100 min",
     price: "1 800 Kč",
     description:
-      "Intenzivní keratinová rekonstrukce. Síla, hebkost a lesk poškozených vlasů.",
+      "Keratinová kúra pro poškozené vlasy — hebčí omak a víc lesku.",
   },
 ] as const;
 
@@ -136,14 +134,17 @@ const cheapestProcedure = procedures.reduce((best, item) =>
 /** Faktový pruh / shrnutí — cena vždy z nejlevnější procedury v ceníku. */
 export const facts = [
   { value: site.street, label: site.city },
-  { value: `od ${cheapestProcedure.price}`, label: cheapestProcedure.name },
+  {
+    value: `od ${cheapestProcedure.price}`,
+    label: "Sarya Man (pánská péče)",
+  },
 ] as const;
 
 export const visitSteps = [
   {
     step: "1",
     title: "Domluva",
-    text: "Vyberete proceduru a termín. Když si nejste jistí, zavolejte, poradíme.",
+    text: "Vyberete proceduru a termín. Když si nejste jistí, zavolejte — poradím.",
   },
   {
     step: "2",
@@ -153,7 +154,7 @@ export const visitSteps = [
   {
     step: "3",
     title: "Na závěr",
-    text: "Sušení, krátké zakončení a prostor na otázky.",
+    text: "Sušení, krátké zakončení a prostor na otázky, kdybyste něco potřebovali.",
   },
 ] as const;
 
@@ -168,15 +169,15 @@ export const faqs = [
   },
   {
     q: "Mám citlivou pokožku. Vadí to?",
-    a: "Napište nám to předem. Používáme Davines a péči upravíme.",
+    a: "Napište to předem. Používám Davines a péči upravím.",
   },
   {
     q: "Hodí se péče i pro muže?",
-    a: "Ano. Sarya Man je speciálně připravený rituál pro muže a krátké vlasy.",
+    a: "Ano. Sarya Man je péče pro muže a kratší vlasy.",
   },
   {
     q: "Jak zrušit nebo změnit termín?",
-    a: "Dejte vědět co nejdřív telefonem nebo přes Instagram, ať termín můžeme nabídnout dál.",
+    a: "Dejte vědět co nejdřív telefonem nebo přes Instagram, ať termín můžu nabídnout dál.",
     // TODO: doplnit přesné storno podmínky, až je majitelka potvrdí
   },
 ] as const;
