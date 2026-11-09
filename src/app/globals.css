@@ -1,0 +1,359 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f4efe6;
+  --ivory: #f3eee5;
+  --mist: #e1e7dc;
+  --sage: #68796b;
+  --forest: #34443a;
+  --sage-light: #a9b8a5;
+  --ink: #26302a;
+  /* sage samotná má s cream textem jen 4.0:1 — hover proto jen přimíchává */
+  --forest-hover: color-mix(in srgb, var(--forest) 80%, var(--sage));
+  --hero-green: 52 68 58;
+  --header-h: 5rem;
+  --logo-h: 3.85rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.625rem;
+  --text-display: clamp(2.125rem, 3.8vw, 3.25rem);
+  --radius: 0.625rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 5.75rem;
+    --logo-h: 4.35rem;
+  }
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-ivory: var(--ivory);
+  --color-mist: var(--mist);
+  --color-sage: var(--sage);
+  --color-forest: var(--forest);
+  --color-forest-hover: var(--forest-hover);
+  --color-sage-light: var(--sage-light);
+  --color-ink: var(--ink);
+  --font-display: var(--font-gelasio);
+  --font-body: var(--font-gelasio);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 0.75rem);
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-gelasio), Georgia, "Times New Roman", serif;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  font-variant-numeric: lining-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--sage) 40%, transparent);
+  color: var(--ink);
+}
+
+.nums {
+  font-variant-numeric: lining-nums;
+}
+
+.section {
+  padding-block: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 6rem;
+  }
+}
+
+.wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    padding-inline: 4rem;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-gelasio), Georgia, "Times New Roman", serif;
+  }
+}
+
+@layer components {
+  .heading {
+    font-family: var(--font-gelasio), Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    font-size: var(--text-display);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .subheading {
+    font-family: var(--font-gelasio), Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    font-size: var(--text-lg);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .kicker {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .card {
+    border-radius: var(--radius);
+    background: var(--cream);
+    border: 1px solid color-mix(in srgb, var(--forest) 9%, transparent);
+    box-shadow: none;
+    transition:
+      border-color 0.35s var(--ease-out),
+      background-color 0.35s var(--ease-out),
+      box-shadow 0.35s var(--ease-out),
+      transform 0.35s var(--ease-out);
+  }
+
+  .card-hover:hover {
+    border-color: color-mix(in srgb, var(--forest) 14%, transparent);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--forest) 11%, transparent);
+  }
+
+  /* rovnoměrný zelený překryv přes celou hero fotku */
+  .hero-overlay {
+    background: rgb(var(--hero-green) / 0.85);
+  }
+
+  /* ztlumení fotky + jemný tmavý přechod pod textem */
+  .hero-photo {
+    filter: brightness(0.88) contrast(0.94) saturate(0.92);
+  }
+
+  .hero-text-scrim {
+    background: linear-gradient(
+      to right,
+      rgb(20 28 24 / 0.55) 0%,
+      rgb(20 28 24 / 0.32) 38%,
+      rgb(20 28 24 / 0.1) 62%,
+      transparent 82%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    transition:
+      opacity 550ms ease-out,
+      transform 550ms ease-out;
+  }
+
+  .js .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:root {
+  --preloader-ivory: #f3eee5;
+  --preloader-sage: #35483d;
+}
+
+html.preloader-pending body {
+  overflow: hidden;
+}
+
+html.preloader-pending body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: var(--preloader-ivory);
+}
+
+html.preloader-active body {
+  overflow: hidden;
+}
+
+@keyframes site-reveal {
+  from {
+    opacity: 0.85;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html.site-revealing body > *:not(.preloader),
+html.site-ready body > *:not(.preloader) {
+  animation: site-reveal 0.5s ease-out both;
+}
+
+@keyframes preloader-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes preloader-brand-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes preloader-line {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  55% {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+  56% {
+    transform-origin: right center;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+}
+
+.preloader {
+  background: var(--preloader-ivory);
+  color: var(--preloader-sage);
+}
+
+.preloader.is-leaving {
+  animation: preloader-fade-out 0.48s ease-out both;
+  pointer-events: none;
+}
+
+.preloader-inner {
+  padding-inline: 1.5rem;
+}
+
+.preloader-brand {
+  color: var(--preloader-sage);
+  animation: preloader-brand-in 0.7s ease-out both;
+}
+
+.preloader-tagline {
+  color: color-mix(in srgb, var(--preloader-sage) 72%, transparent);
+  animation: preloader-brand-in 0.7s ease-out 0.12s both;
+}
+
+.preloader-line {
+  width: min(9rem, 42vw);
+  height: 1px;
+  background: var(--preloader-sage);
+  transform: scaleX(0);
+  animation: preloader-line 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.25s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader,
+  .preloader-brand,
+  .preloader-tagline,
+  .preloader-line {
+    animation: none !important;
+  }
+
+  .preloader-line {
+    transform: scaleX(1);
+  }
+}
+
+/* vlastní kurzor — tečka + kroužek, vždy čitelný (světlý + tmavý obrys) */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  opacity: 0;
+  will-change: transform;
+}
+
+.custom-cursor-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--ink);
+  box-shadow:
+    0 0 0 1.5px var(--cream),
+    0 1px 3px rgb(0 0 0 / 0.25);
+}
+
+.custom-cursor-ring {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--ink);
+  box-shadow:
+    0 0 0 1px var(--cream),
+    inset 0 0 0 1px var(--cream),
+    0 1px 4px rgb(0 0 0 / 0.18);
+}
+
+html.cursor-hover .custom-cursor-dot {
+  width: 5px;
+  height: 5px;
+}

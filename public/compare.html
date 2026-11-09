@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="cs"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sarya — upscale porovnání</title>
+<style>
+  body{margin:0;font-family:Georgia,serif;background:#f3eee5;color:#26302a;padding:2rem}
+  h1{font-weight:500;font-size:1.75rem}
+  p{opacity:.75;max-width:40rem}
+  figure{margin:2.5rem 0}
+  figcaption{font-weight:600;margin-bottom:.75rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .row div{background:#fff;border-radius:.5rem;overflow:hidden;border:1px solid rgba(52,68,58,.1)}
+  .row span{display:block;padding:.5rem .75rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#68796b}
+  img{display:block;width:100%;height:auto}
+  a{color:#34443a}
+  @media(max-width:700px){.row{grid-template-columns:1fr}}
+</style></head><body>
+<h1>Upscale 2× — porovnání</h1>
+<p>Lokální zvětšení (Lanczos + doostření). Meta AI tady nemám napojené — tohle je kvalitní lokální upscale z e-mailových originálů.</p>
+<p><a href="/">← zpět na web</a></p>
+
+  <figure>
+    <figcaption>hero.jpg</figcaption>
+    <div class="row">
+      <div><span>před</span><img src="/images/originals/hero.jpg" alt="před hero.jpg"></div>
+      <div><span>po 2×</span><img src="/images/hero.jpg" alt="po hero.jpg"></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption>about.jpg</figcaption>
+    <div class="row">
+      <div><span>před</span><img src="/images/originals/about.jpg" alt="před about.jpg"></div>
+      <div><span>po 2×</span><img src="/images/about.jpg" alt="po about.jpg"></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption>procedure-basic.jpg</figcaption>
+    <div class="row">
+      <div><span>před</span><img src="/images/originals/procedure-basic.jpg" alt="před procedure-basic.jpg"></div>
+      <div><span>po 2×</span><img src="/images/procedure-basic.jpg" alt="po procedure-basic.jpg"></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption>procedure-relax.jpg</figcaption>
+    <div class="row">
+      <div><span>před</span><img src="/images/originals/procedure-relax.jpg" alt="před procedure-relax.jpg"></div>
+      <div><span>po 2×</span><img src="/images/procedure-relax.jpg" alt="po procedure-relax.jpg"></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption>procedure-man.jpg</figcaption>
+    <div class="row">
+      <div><span>před</span><img src="/images/originals/procedure-man.jpg" alt="před procedure-man.jpg"></div>
+      <div><span>po 2×</span><img src="/images/procedure-man.jpg" alt="po procedure-man.jpg"></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption>procedure-keratin.jpg</figcaption>
+    <div class="row">
+      <div><span>před</span><img src="/images/originals/procedure-keratin.jpg" alt="před procedure-keratin.jpg"></div>
+      <div><span>po 2×</span><img src="/images/procedure-keratin.jpg" alt="po procedure-keratin.jpg"></div>
+    </div>
+  </figure>
+</body></html>
