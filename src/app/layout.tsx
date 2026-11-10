@@ -39,8 +39,32 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   icons: {
     icon: [
-      { url: `${basePath}/favicon.ico`, sizes: "48x48" },
-      { url: `${basePath}/logo.png`, type: "image/png", sizes: "512x512" },
+      { url: `${basePath}/favicon.ico`, sizes: "any" },
+      {
+        url: `${basePath}/favicon-16x16.png`,
+        type: "image/png",
+        sizes: "16x16",
+      },
+      {
+        url: `${basePath}/favicon-32x32.png`,
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: `${basePath}/favicon-48x48.png`,
+        type: "image/png",
+        sizes: "48x48",
+      },
+      {
+        url: `${basePath}/android-chrome-192x192.png`,
+        type: "image/png",
+        sizes: "192x192",
+      },
+      {
+        url: `${basePath}/android-chrome-512x512.png`,
+        type: "image/png",
+        sizes: "512x512",
+      },
     ],
     apple: [
       {
@@ -50,6 +74,7 @@ export const metadata: Metadata = {
       },
     ],
   },
+  manifest: `${basePath}/site.webmanifest`,
   openGraph: {
     title: "Head Spa Opava | Sarya Head Spa",
     description:

@@ -1,17 +1,37 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactNode,
+} from "react";
+
+type RevealProps = {
+  children: ReactNode;
+  className?: string;
+  /** pořadí v řadě karet — stagger max. 80 ms, nejvýš 3 karty za sebou */
+  index?: number;
+  delay?: number;
+  stagger?: boolean;
+  rootMargin?: string;
+  threshold?: number;
+} & Omit<HTMLAttributes<HTMLDivElement>, "ref" | "style"> & {
+    style?: CSSProperties;
+  };
 
 export function Reveal({
   children,
   className = "",
   index = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  /** pořadí v řadě karet — stagger max. 80 ms, nejvýš 3 karty za sebou */
-  index?: number;
-}) {
+  delay = 0,
+  stagger = false,
+  rootMargin = "0px 0px -6% 0px",
+  threshold = 0.08,
+  style,
+  ...rest
+}: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +45,6 @@ export function Reveal({
 
     const show = () => node.classList.add("is-visible");
 
-    // už nad ohybem / mimo viewport nahoru → rovnou ukázat (ať nezůstane invisible)
     const rect = node.getBoundingClientRect();
     if (rect.top < window.innerHeight * 0.92) {
       show();
@@ -39,18 +58,28 @@ export function Reveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.05, rootMargin: "0px 0px -4% 0px" },
+      { threshold, rootMargin },
     );
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [rootMargin, threshold]);
+
+  const resolvedDelay = delay || (index ? (index % 3) * 80 : 0);
+
+  const mergedStyle: CSSProperties = {
+    ...style,
+    ...(resolvedDelay
+      ? ({ ["--reveal-delay" as string]: `${resolvedDelay}ms` } as CSSProperties)
+      : {}),
+  };
 
   return (
     <div
       ref={ref}
-      className={`reveal ${className}`}
-      style={index ? { transitionDelay: `${(index % 3) * 80}ms` } : undefined}
+      className={`reveal${stagger ? " reveal-stagger" : ""}${className ? ` ${className}` : ""}`}
+      style={mergedStyle}
+      {...rest}
     >
       {children}
     </div>

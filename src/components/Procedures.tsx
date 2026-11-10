@@ -19,7 +19,7 @@ export function Procedures() {
           center
         />
 
-        <ul className="mt-12 grid items-stretch gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+        <ul className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-6">
           {procedures.map((item, index) => (
             <li key={item.name} className="h-full">
               <Reveal index={index} className="h-full">

@@ -1,6 +1,11 @@
 import { faqs, procedures, site } from "@/lib/content";
+import { getReviewsView, validIsoDate } from "@/lib/reviews";
 
 export function JsonLd() {
+  // Stejná data a stejná pravidla jako sekce Recenze, aby JSON-LD odpovídal viditelnému obsahu.
+  const reviews = getReviewsView();
+  const showReviews = reviews.mode === "full" && reviews.rating !== null;
+
   const salon = {
     "@context": "https://schema.org",
     "@type": "BeautySalon",

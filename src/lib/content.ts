@@ -1,3 +1,9 @@
+import { GOOGLE_REVIEWS_URL, GOOGLE_WRITE_REVIEW_URL } from "@/data/reviews";
+
+const googleReviewsUrl =
+  GOOGLE_REVIEWS_URL.trim() ||
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Sarya Head Spa Opava Ostrožná 8")}`;
+
 export const site = {
   // TODO: potvrdit finální doménu před spuštěním
   url: "https://sarya-headspa.cz",
@@ -30,15 +36,11 @@ export const site = {
     days: [] as { day: string; hours: string }[],
   },
   /**
-   * Google recenze. Odkaz na vyhledání profilu; skóre jen z ověřeného Google Business.
-   * TODO: doplnit reálné hodnoty (NEXT_PUBLIC_GOOGLE_RATING a NEXT_PUBLIC_GOOGLE_REVIEW_COUNT).
-   * Dokud chybí, na webu se číslo ani plné hvězdy nezobrazují. Nepřebírat Notino.
+   * Odkazy na Google recenze — hodnoty se vyplňují v src/data/reviews.ts (env se nepoužívá).
+   * Prázdné URL = záložní odkaz na vyhledání profilu v Google Maps.
    */
-  googleReviewsUrl:
-    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL?.trim() ||
-    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Sarya Head Spa Opava Ostrožná 8")}`,
-  googleRating: process.env.NEXT_PUBLIC_GOOGLE_RATING?.trim() || "",
-  googleReviewCount: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_COUNT?.trim() || "",
+  googleReviewsUrl,
+  googleWriteReviewUrl: GOOGLE_WRITE_REVIEW_URL.trim() || googleReviewsUrl,
 } as const;
 
 export const bookingIsExternal = site.bookingUrl.startsWith("http");

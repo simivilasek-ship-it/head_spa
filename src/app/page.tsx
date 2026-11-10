@@ -1,5 +1,6 @@
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
+import { FaqSection } from "@/components/FaqSection";
 import { Footer } from "@/components/Footer";
 import { Gallery } from "@/components/Gallery";
 import { Header } from "@/components/Header";
@@ -25,6 +26,7 @@ export default function Home() {
         <Gallery />
         <Reviews />
         <Voucher />
+        <FaqSection />
         <Contact />
       </main>
       <Footer />

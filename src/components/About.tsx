@@ -12,14 +12,14 @@ export function About() {
       className="section section-compact-bottom bg-forest text-cream"
     >
       <div className="wrap">
-        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-12 lg:grid-cols-[minmax(0,22rem)_1fr]">
-          {/* Desktop: foto vlevo. Mobil: pod textem. */}
+        <div className="grid items-start gap-10 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-12 lg:grid-cols-[minmax(0,22rem)_1fr]">
+          {/* Desktop: foto vlevo. Mobil: menší, pod textem. */}
           <div className="order-2 md:order-1">
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[var(--radius)] md:mx-0 md:max-w-none">
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-[17.5rem] overflow-hidden rounded-[var(--radius)] sm:max-w-[19rem] md:mx-0 md:max-w-none">
               <SiteImage
                 src={images.about.src}
                 alt={images.about.alt}
-                sizes="(max-width: 768px) 100vw, 22rem"
+                sizes="(max-width: 768px) 19rem, 22rem"
                 className="object-cover object-center"
                 priority
               />
@@ -33,9 +33,9 @@ export function About() {
               title={copy.about.title}
               dark
             />
-            <p className="subheading mt-5 text-cream">{copy.about.greeting}</p>
+            <p className="subheading mt-6 text-cream">{copy.about.greeting}</p>
             <AboutText paragraphs={copy.about.paragraphs} />
-            <p className="mt-3 inline-flex w-fit max-w-full items-center rounded-full border border-sage-light/35 bg-forest/40 px-3 py-1 text-[length:var(--text-xs)] font-medium normal-case tracking-[0.02em] text-cream/90">
+            <p className="mt-5 text-[var(--text-sm)] leading-6 text-cream/80">
               {copy.cosmetics.body}
             </p>
           </div>

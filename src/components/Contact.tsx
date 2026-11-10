@@ -1,10 +1,14 @@
 import { BookingButton } from "@/components/Button";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/SectionHeader";
 import { copy, site } from "@/lib/content";
 
 const mapQuery = encodeURIComponent(
   `${site.street}, ${site.postalCode} ${site.city}`,
 );
+
+/** Embed bez API klíče — Maps iframe nesmí být v parentu s CSS transform (Reveal). */
+const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&z=16&hl=cs&output=embed`;
 
 export function Contact() {
   const cards = [
@@ -24,15 +28,17 @@ export function Contact() {
       className="section bg-mist"
     >
       <div className="wrap">
-        <SectionHeader
-          id="kontakt-heading"
-          kicker={copy.contact.kicker}
-          title={copy.contact.title}
-          subtitle={copy.contact.body}
-        />
+        <Reveal>
+          <SectionHeader
+            id="kontakt-heading"
+            kicker={copy.contact.kicker}
+            title={copy.contact.title}
+            subtitle={copy.contact.body}
+          />
+        </Reveal>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8">
-          <div className="flex flex-col gap-2.5">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8 lg:items-stretch">
+          <Reveal className="flex flex-col gap-2.5">
             {cards.map((card) => (
               <a
                 key={card.label}
@@ -59,15 +65,16 @@ export function Contact() {
               </div>
             ) : null}
             <BookingButton className="mt-3 self-start" />
-          </div>
+          </Reveal>
 
           <div className="card overflow-hidden">
             <iframe
               title={`Mapa: ${site.street}, ${site.city}`}
-              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+              src={mapEmbedSrc}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="block h-56 w-full grayscale-[0.25] contrast-[1.05] md:h-full md:min-h-80"
+              allowFullScreen
+              className="block h-64 w-full border-0 grayscale-[0.25] contrast-[1.05] md:h-full md:min-h-[22rem]"
             />
           </div>
         </div>

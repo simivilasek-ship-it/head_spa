@@ -124,6 +124,9 @@ export function Header() {
           ref={menuRef}
           id={menuId}
           className={`border-t border-sage/15 bg-cream md:hidden ${open ? "block" : "hidden"}`}
+          role={open ? "dialog" : undefined}
+          aria-modal={open ? true : undefined}
+          aria-label={open ? "Mobilní menu" : undefined}
         >
           <ul className="wrap flex flex-col py-3">
             {nav.map((item) => (
@@ -137,6 +140,18 @@ export function Header() {
                 </a>
               </li>
             ))}
+            <li className="pt-2">
+              <BookingButton className="w-full" tone="light" onClick={close} />
+            </li>
+            <li className="pt-1">
+              <a
+                href={site.phoneHref}
+                className="flex min-h-11 items-center justify-center rounded-[var(--radius)] border border-forest/20 px-4 py-3 text-[var(--text-sm)] font-semibold text-forest transition-colors hover:bg-mist"
+                onClick={close}
+              >
+                Zavolat {site.phone}
+              </a>
+            </li>
           </ul>
         </div>
       </header>

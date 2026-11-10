@@ -7,6 +7,7 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   external?: boolean;
+  onClick?: () => void;
 };
 
 const tones = {
@@ -21,11 +22,12 @@ export function Button({
   children,
   className = "",
   external = false,
+  onClick,
   tone = "light",
 }: ButtonProps & {
   tone?: Tone;
 }) {
-  const classes = `inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius)] px-6 py-3 text-[var(--text-sm)] font-semibold tracking-[0.02em] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${tones[tone]} ${className}`;
+  const classes = `btn-press inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius)] px-6 py-3 text-[var(--text-sm)] font-semibold tracking-[0.02em] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${tones[tone]} ${className}`;
 
   if (external) {
     return (
@@ -34,6 +36,7 @@ export function Button({
         className={classes}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={onClick}
       >
         {children}
       </a>
@@ -41,7 +44,7 @@ export function Button({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} onClick={onClick}>
       {children}
     </Link>
   );
@@ -50,9 +53,11 @@ export function Button({
 export function BookingButton({
   tone = "light",
   className = "",
+  onClick,
 }: {
   tone?: Tone;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
     <Button
@@ -60,6 +65,7 @@ export function BookingButton({
       external={bookingIsExternal}
       tone={tone}
       className={className}
+      onClick={onClick}
     >
       {copy.hero.ctaPrimary}
     </Button>
