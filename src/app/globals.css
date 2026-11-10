@@ -58,13 +58,10 @@ body {
 }
 
 .whatsapp-fab {
-  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
-}
-
-@media (min-width: 768px) {
-  .whatsapp-fab {
-    bottom: 1.5rem;
-  }
+  right: 12px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: 48px;
+  height: 48px;
 }
 
 /* kurzor jako na zatepleni-vilasek.cz / simivilasek.cz */
@@ -155,9 +152,35 @@ body {
   padding-block: 4rem;
 }
 
+.section.section-compact-bottom {
+  padding-bottom: 1.5rem;
+}
+
+.section.gallery-section {
+  padding-bottom: 1rem;
+}
+
+.section.reviews-section {
+  padding-top: 0.25rem;
+  padding-bottom: 2.5rem;
+}
+
 @media (min-width: 768px) {
   .section {
     padding-block: 6rem;
+  }
+
+  .section.section-compact-bottom {
+    padding-bottom: 2.5rem;
+  }
+
+  .section.gallery-section {
+    padding-bottom: 1.75rem;
+  }
+
+  .section.reviews-section {
+    padding-top: 0.5rem;
+    padding-bottom: 3.5rem;
   }
 }
 

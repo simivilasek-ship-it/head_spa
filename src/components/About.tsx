@@ -9,7 +9,7 @@ export function About() {
     <section
       id="o-salonu"
       aria-labelledby="o-salonu-heading"
-      className="section bg-forest text-cream"
+      className="section section-compact-bottom bg-forest text-cream"
     >
       <div className="wrap">
         <div className="grid items-start gap-8 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-12 lg:grid-cols-[minmax(0,22rem)_1fr]">
@@ -35,12 +35,11 @@ export function About() {
             />
             <p className="subheading mt-5 text-cream">{copy.about.greeting}</p>
             <AboutText paragraphs={copy.about.paragraphs} />
+            <p className="mt-3 inline-flex w-fit max-w-full items-center rounded-full border border-sage-light/35 bg-forest/40 px-3 py-1 text-[length:var(--text-xs)] font-medium normal-case tracking-[0.02em] text-cream/90">
+              {copy.cosmetics.body}
+            </p>
           </div>
         </div>
-
-        <p className="mt-10 text-[var(--text-xs)] font-medium uppercase tracking-[0.16em] text-sage-light/90">
-          {copy.cosmetics.body}
-        </p>
       </div>
     </section>
   );

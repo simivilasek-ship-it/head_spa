@@ -34,7 +34,7 @@ function StarRow({ rating }: { rating: number }) {
   );
 }
 
-/** Shrnutí Google recenzí — hvězdičky + odkaz, bez textových karet. */
+/** Shrnutí Google recenzí. Bez ověřeného skóre se nevykreslí číslo ani plné hvězdy. */
 export function Reviews() {
   const rating = parseRating(site.googleRating);
   const count = site.googleReviewCount.replace(/\D/g, "");
@@ -44,7 +44,7 @@ export function Reviews() {
     <section
       id="recenze"
       aria-labelledby="recenze-heading"
-      className="section bg-ivory"
+      className="section reviews-section bg-ivory"
     >
       <div className="wrap">
         <SectionHeader
@@ -55,7 +55,7 @@ export function Reviews() {
           center
         />
 
-        <div className="mx-auto mt-10 flex max-w-md flex-col items-center text-center">
+        <div className="mx-auto mt-8 flex max-w-md flex-col items-center text-center md:mt-10">
           {rating !== null ? (
             <>
               <StarRow rating={rating} />
@@ -72,12 +72,9 @@ export function Reviews() {
               </p>
             </>
           ) : (
-            <>
-              <StarRow rating={5} />
-              <p className="mt-4 text-[var(--text-base)] text-ink/75">
-                Recenze a hvězdičky najdete na našem Google profilu.
-              </p>
-            </>
+            <p className="text-[var(--text-base)] text-ink/75">
+              Recenze a hvězdičky najdete na našem Google profilu.
+            </p>
           )}
 
           <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">

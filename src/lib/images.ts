@@ -32,39 +32,23 @@ export const images = {
   gallery: [
     {
       src: "/images/gallery-1.jpg",
-      alt: "Pohled na lehátko, umyvadlo a botanické obrazy v zeleném salonu",
-      title: "Procedurní zóna",
-      caption: "Lehátko a umyvadlo",
+      alt: "Dvě botanické obrazy nad umyvadlem, vozík s kosmetikou a lehátko u okna",
     },
     {
       src: "/images/gallery-2.jpg",
-      alt: "Detail head spa umyvadla s tekoucí vodou při péči o pokožku hlavy",
-      title: "Head spa umyvadlo",
-      caption: "Péče o pokožku hlavy",
+      alt: "Proudy vody z head spa umyvadla, v pozadí lehátko a toaletka se zrcadlem",
     },
     {
       src: "/images/gallery-3.jpg",
-      alt: "Toaletní stolek se zrcadlem a vitrína s vlasovou kosmetikou",
-      title: "Toaletní stolek",
-      caption: "Kosmetika Davines",
+      alt: "Toaletní stolek s kulatým osvětleným zrcadlem, vitrína a dvě křesla",
     },
     {
       src: "/images/gallery-4.jpg",
-      alt: "Celkový pohled do salonu Sarya Head Spa s lehátkem a policí",
-      title: "Celý salon",
-      caption: "Ostrožná 8, Opava",
-    },
-    {
-      src: "/images/hero.jpg",
-      alt: "Salon s křeslem, terracotta stěnou a denním světlem z okna",
-      title: "Odpočinek u okna",
-      caption: "Denní světlo",
+      alt: "Lehátko s okrovou dekou u okna, police s ručníky a béžové křeslo",
     },
     {
       src: "/images/procedure-relax.jpg",
-      alt: "Lehátko s vozíkem, lampou a připravenými ručníky před návštěvou",
-      title: "Připravené lehátko",
-      caption: "Před procedurou",
+      alt: "Pohled z lehátka na umyvadlo, vozík a lampu u dřevěné stěny",
     },
-  ] as { src: string; alt: string; title: string; caption?: string }[],
+  ] as { src: string; alt: string }[],
 } as const;

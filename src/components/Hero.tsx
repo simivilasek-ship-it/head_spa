@@ -8,7 +8,7 @@ export function Hero() {
     <section
       id="uvod"
       aria-labelledby="hero-heading"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-forest md:min-h-screen"
+      className="relative flex min-h-0 flex-col justify-end overflow-hidden bg-forest md:min-h-[34rem]"
     >
       <SiteImage
         src={images.hero.src}
@@ -21,7 +21,7 @@ export function Hero() {
       <div className="hero-overlay absolute inset-0" aria-hidden />
       <div className="hero-text-scrim absolute inset-0" aria-hidden />
 
-      <div className="relative z-10 wrap max-w-3xl pb-28 pt-28 md:pb-24 md:pt-32">
+      <div className="relative z-10 wrap max-w-3xl pb-[calc(4.25rem+1.5rem)] pt-28 md:pb-12 md:pt-32">
         <p className="kicker inline-flex w-fit text-cream">
           {copy.hero.kicker}
         </p>
@@ -67,6 +67,16 @@ export function Hero() {
             </li>
           ))}
         </ul>
+
+        <a
+          href="#procedury"
+          className="mt-6 inline-flex items-center gap-2 text-[var(--text-xs)] font-medium tracking-wide text-cream/80 no-underline transition-colors hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light"
+        >
+          <span>scrolluj</span>
+          <span aria-hidden="true" className="text-[var(--text-sm)] leading-none">
+            ↓
+          </span>
+        </a>
       </div>
     </section>
   );

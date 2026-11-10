@@ -1,132 +1,95 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SiteImage } from "@/components/SiteImage";
 import { images } from "@/lib/images";
 
-type Photo = (typeof images.gallery)[number];
-
-/** Galerie jako na zatepleni-vilasek.cz — mřížka, hover zoom, rozkliknutí bez titulků. */
+/** Galerie salonu ze skutečných fotek. */
 export function Gallery() {
   const photos = images.gallery;
-  const [active, setActive] = useState<number | null>(null);
-
-  const close = useCallback(() => setActive(null), []);
-
-  const showPrev = useCallback(() => {
-    setActive((current) =>
-      current === null ? current : (current - 1 + photos.length) % photos.length,
-    );
-  }, [photos.length]);
-
-  const showNext = useCallback(() => {
-    setActive((current) =>
-      current === null ? current : (current + 1) % photos.length,
-    );
-  }, [photos.length]);
+  const scrollerRef = useRef<HTMLUListElement>(null);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (active === null) return;
+    const root = scrollerRef.current;
+    if (!root) return;
+    const slides = [...root.querySelectorAll<HTMLElement>("[data-slide]")];
+    if (slides.length === 0) return;
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-      if (event.key === "ArrowLeft") showPrev();
-      if (event.key === "ArrowRight") showNext();
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const next = slides.indexOf(visible.target as HTMLElement);
+        if (next >= 0) setIndex(next);
+      },
+      { root, threshold: [0.55, 0.75] },
+    );
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [active, close, showPrev, showNext]);
+    slides.forEach((slide) => observer.observe(slide));
+    return () => observer.disconnect();
+  }, [photos.length]);
 
   if (photos.length === 0) return null;
 
-  const activePhoto: Photo | null =
-    active === null ? null : (photos[active] ?? null);
+  const scrollTo = (next: number) => {
+    const root = scrollerRef.current;
+    const slide = root?.querySelectorAll<HTMLElement>("[data-slide]")[next];
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    slide?.scrollIntoView({
+      behavior: reduce ? "auto" : "smooth",
+      inline: "start",
+      block: "nearest",
+    });
+  };
 
   return (
-    <section aria-label="Galerie salonu" className="section bg-cream">
-      <div className="wrap">
-        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-          {photos.map((photo, index) => (
-            <li key={`${photo.src}-${photo.alt}`}>
-              <button
-                type="button"
-                onClick={() => setActive(index)}
-                aria-label={`Zvětšit fotku: ${photo.alt}`}
-                className="group relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius)] bg-mist text-left shadow-sm ring-1 ring-forest/8 transition hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
-              >
-                <SiteImage
-                  src={photo.src}
-                  alt={photo.alt}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                />
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {activePhoto ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={activePhoto.alt}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-forest/88 p-4"
-          onClick={close}
-        >
-          <button
-            type="button"
-            onClick={close}
-            className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-cream/35 text-cream transition hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light"
-            aria-label="Zavřít"
+    <section
+      aria-label="Galerie salonu"
+      className="section gallery-section bg-cream"
+    >
+      <ul
+        ref={scrollerRef}
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-5 px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {photos.map((photo) => (
+          <li
+            key={photo.src}
+            data-slide
+            className="w-[85vw] shrink-0 snap-start md:w-[min(85vw,40rem)]"
           >
-            ×
-          </button>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius)]">
+              <SiteImage
+                src={photo.src}
+                alt={photo.alt}
+                sizes="(max-width: 768px) 85vw, 40rem"
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
 
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              showPrev();
-            }}
-            className="absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-cream/35 text-cream transition hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light md:left-6"
-            aria-label="Předchozí fotka"
-          >
-            ‹
-          </button>
-
-          <div
-            className="relative aspect-[4/3] w-full max-w-5xl overflow-hidden rounded-[var(--radius)] bg-ink/40"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <SiteImage
-              src={activePhoto.src}
-              alt={activePhoto.alt}
-              sizes="90vw"
-              className="object-contain"
-              priority
+      <div className="mt-3 flex items-center justify-center gap-3 px-5">
+        <div className="flex items-center gap-1.5" role="group" aria-label="Fotky v galerii">
+          {photos.map((photo, photoIndex) => (
+            <button
+              key={photo.src}
+              type="button"
+              aria-label={`Fotka ${photoIndex + 1} z ${photos.length}`}
+              aria-current={photoIndex === index ? "true" : undefined}
+              onClick={() => scrollTo(photoIndex)}
+              className={`h-1.5 rounded-full transition-all ${
+                photoIndex === index ? "w-4 bg-forest" : "w-1.5 bg-forest/30"
+              }`}
             />
-          </div>
-
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              showNext();
-            }}
-            className="absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-cream/35 text-cream transition hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light md:right-6"
-            aria-label="Další fotka"
-          >
-            ›
-          </button>
+          ))}
         </div>
-      ) : null}
+        <p className="nums text-[length:var(--text-xs)] text-sage" aria-live="polite">
+          {index + 1}/{photos.length}
+        </p>
+      </div>
     </section>
   );
 }
