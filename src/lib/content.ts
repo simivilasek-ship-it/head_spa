@@ -27,6 +27,16 @@ export const site = {
     label: "",
     days: [] as { day: string; hours: string }[],
   },
+  /**
+   * Google recenze — odkaz na profil + volitelné skóre z Google Business.
+   * Place URL / Place ID doplnit z Google Maps (Sdílet → Kopírovat odkaz).
+   * Rating a počet aktualizovat podle Google (Places API zatím nepoužíváme — static export).
+   */
+  googleReviewsUrl:
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL?.trim() ||
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Sarya Head Spa Opava Ostrožná 8")}`,
+  googleRating: process.env.NEXT_PUBLIC_GOOGLE_RATING?.trim() || "",
+  googleReviewCount: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_COUNT?.trim() || "",
 } as const;
 
 export const bookingIsExternal = site.bookingUrl.startsWith("http");
@@ -77,9 +87,16 @@ export const copy = {
     title: "Jak to probíhá",
   },
   reviews: {
-    kicker: "Co říkají klienti",
+    kicker: "Google",
     title: "Recenze",
-    subtitle: "Krátké střípky z návštěv — doplníme reálnými zkušenostmi.",
+    subtitle: "Hodnocení přímo z Google — otevřete si celé recenze tam.",
+    ctaRead: "Číst na Google",
+    ctaWrite: "Napsat recenzi",
+  },
+  gallery: {
+    kicker: "Ukázky salonu",
+    title: "Galerie",
+    subtitle: "Prostor na Ostrožné — lehátko, umyvadlo a chvíle klidu.",
   },
   voucher: {
     kicker: "Pro vaše blízké",
@@ -98,25 +115,6 @@ export const copy = {
     cta: "Objednat se",
   },
 } as const;
-
-/** TODO: nahradit zástupnými kartami reálné recenze (jméno, hodnocení, text). */
-export const reviews = [
-  {
-    name: "TODO — jméno 1",
-    rating: 5,
-    text: "TODO: krátká reálná recenze od klientky nebo klienta.",
-  },
-  {
-    name: "TODO — jméno 2",
-    rating: 5,
-    text: "TODO: krátká reálná recenze od klientky nebo klienta.",
-  },
-  {
-    name: "TODO — jméno 3",
-    rating: 5,
-    text: "TODO: krátká reálná recenze od klientky nebo klienta.",
-  },
-] as const;
 
 // Časy dle Notina: Basic/Man ~61, Relax ~91, Keratin ~101 min
 export const procedures = [

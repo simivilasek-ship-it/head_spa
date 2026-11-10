@@ -4,7 +4,6 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BookingButton } from "@/components/Button";
 import { Logo } from "@/components/Logo";
-import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { nav, site } from "@/lib/content";
 
 function hrefFor(linkHref: string, onHome: boolean) {
@@ -142,7 +141,6 @@ export function Header() {
         </div>
       </header>
 
-      <MobileCtaBar />
     </>
   );
 }
