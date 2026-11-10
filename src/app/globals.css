@@ -70,9 +70,35 @@ body {
   padding-block: 4rem;
 }
 
+.section.section-compact-bottom {
+  padding-bottom: 1.5rem;
+}
+
+.section.gallery-section {
+  padding-bottom: 1rem;
+}
+
+.section.reviews-section {
+  padding-top: 0.25rem;
+  padding-bottom: 2.5rem;
+}
+
 @media (min-width: 768px) {
   .section {
     padding-block: 6rem;
+  }
+
+  .section.section-compact-bottom {
+    padding-bottom: 2.5rem;
+  }
+
+  .section.gallery-section {
+    padding-bottom: 1.75rem;
+  }
+
+  .section.reviews-section {
+    padding-top: 0.5rem;
+    padding-bottom: 3.5rem;
   }
 }
 

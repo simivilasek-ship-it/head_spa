@@ -32,27 +32,23 @@ export const images = {
   gallery: [
     {
       src: "/images/gallery-1.jpg",
-      alt: "Lehátko, umyvadlo a botanické obrazy",
+      alt: "Dvě botanické obrazy nad umyvadlem, vozík s kosmetikou a lehátko u okna",
     },
     {
       src: "/images/gallery-2.jpg",
-      alt: "Detail head spa umyvadla s vodou",
+      alt: "Proudy vody z head spa umyvadla, v pozadí lehátko a toaletka se zrcadlem",
     },
     {
       src: "/images/gallery-3.jpg",
-      alt: "Toaletní stolek a vitrína s produkty",
+      alt: "Toaletní stolek s kulatým osvětleným zrcadlem, vitrína a dvě křesla",
     },
     {
       src: "/images/gallery-4.jpg",
-      alt: "Celkový pohled do salonu",
-    },
-    {
-      src: "/images/hero.jpg",
-      alt: "Salon s křeslem a terracotta stěnou",
+      alt: "Lehátko s okrovou dekou u okna, police s ručníky a béžové křeslo",
     },
     {
       src: "/images/procedure-relax.jpg",
-      alt: "Lehátko s vozíkem a lampou",
+      alt: "Pohled z lehátka na umyvadlo, vozík a lampu u dřevěné stěny",
     },
   ] as { src: string; alt: string }[],
 } as const;
