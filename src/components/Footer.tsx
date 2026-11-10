@@ -4,9 +4,9 @@ import { site } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="bg-forest pb-10 pt-12 text-[var(--text-sm)] text-cream/75 md:pb-12">
+    <footer className="bg-forest pb-12 pt-14 text-[var(--text-sm)] text-cream/75 md:pb-14 md:pt-16">
       <div className="wrap">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="flex items-start gap-4">
             <Logo size={56} showWordmark tone="light" />
             <div className="nums space-y-1.5">
@@ -35,7 +35,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <p className="mt-10 border-t border-cream/12 pt-6 text-[var(--text-xs)] tracking-[0.02em]">
+        <p className="mt-12 border-t border-cream/12 pt-7 text-[var(--text-xs)] tracking-[0.02em]">
           © 2026 {site.legalName} · Web vytvořil{" "}
           <a
             href="https://simivilasek.cz"

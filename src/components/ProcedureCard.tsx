@@ -17,7 +17,7 @@ export function ProcedureCard({
 }: ProcedureCardProps) {
   return (
     <article
-      className={`card card-hover flex h-full flex-col p-5 md:p-6 ${
+      className={`card card-hover flex h-full flex-col p-6 md:p-7 ${
         featured ? "ring-1 ring-forest/25" : ""
       }`}
     >
@@ -32,7 +32,7 @@ export function ProcedureCard({
         ) : null}
       </div>
 
-      <div className="mt-4 flex items-baseline justify-between gap-3">
+      <div className="mt-5 flex items-baseline justify-between gap-3">
         <h3 className="text-[1.125rem] font-semibold leading-snug tracking-[-0.01em] text-ink">
           {name}
         </h3>
@@ -41,11 +41,11 @@ export function ProcedureCard({
         </p>
       </div>
 
-      <p className="mt-3 flex-1 text-[var(--text-sm)] leading-6 text-ink/70">
+      <p className="mt-3.5 flex-1 text-[var(--text-sm)] leading-7 text-ink/70">
         {description}
       </p>
 
-      <div className="mt-auto pt-6">
+      <div className="mt-auto pt-7">
         <BookingButton className="w-full" />
       </div>
     </article>

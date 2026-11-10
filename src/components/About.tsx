@@ -9,10 +9,10 @@ export function About() {
     <section
       id="o-salonu"
       aria-labelledby="o-salonu-heading"
-      className="section section-compact-bottom bg-forest text-cream"
+      className="section bg-forest text-cream"
     >
       <div className="wrap">
-        <div className="grid items-start gap-10 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-12 lg:grid-cols-[minmax(0,22rem)_1fr]">
+        <div className="grid items-start gap-12 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-14 lg:grid-cols-[minmax(0,22rem)_1fr]">
           {/* Desktop: foto vlevo. Mobil: menší, pod textem. */}
           <div className="order-2 md:order-1">
             <div className="relative mx-auto aspect-[3/4] w-full max-w-[17.5rem] overflow-hidden rounded-[var(--radius)] sm:max-w-[19rem] md:mx-0 md:max-w-none">

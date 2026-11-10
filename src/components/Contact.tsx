@@ -37,8 +37,8 @@ export function Contact() {
           />
         </Reveal>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8 lg:items-stretch">
-          <Reveal className="flex flex-col gap-2.5">
+        <div className="section-stack grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8 lg:items-stretch">
+          <Reveal className="flex flex-col gap-3.5">
             {cards.map((card) => (
               <a
                 key={card.label}
@@ -64,7 +64,7 @@ export function Contact() {
                 </span>
               </div>
             ) : null}
-            <BookingButton className="mt-3 self-start" />
+            <BookingButton className="mt-5 self-start" />
           </Reveal>
 
           <div className="card overflow-hidden">

@@ -33,7 +33,7 @@ export function ReviewCard({ name, rating, text, date }: ReviewCardProps) {
   }, [expanded, text]);
 
   return (
-    <article className="card flex h-full w-full min-w-0 flex-col p-5 md:p-6">
+    <article className="card flex h-full w-full min-w-0 flex-col p-6 md:p-7">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="truncate text-[var(--text-base)] font-semibold leading-snug text-ink">

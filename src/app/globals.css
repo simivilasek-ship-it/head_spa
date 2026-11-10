@@ -157,17 +157,24 @@ a {
   font-variant-numeric: lining-nums;
 }
 
+/* jednotný vzduch mezi sekcemi — celý web stejně */
 .section {
-  padding-block: 5rem;
-}
-
-.section.section-compact-bottom {
-  padding-bottom: 3rem;
+  padding-block: 5.5rem;
 }
 
 .section.gallery-section {
-  padding-bottom: 3.5rem;
   overflow: hidden;
+}
+
+/* mezera header → obsah sekce */
+.section-stack {
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-stack {
+    margin-top: 3.5rem;
+  }
 }
 
 /* umělecký deck — nakloněné karty */
@@ -229,27 +236,9 @@ a {
   }
 }
 
-.section.reviews-section {
-  padding-top: 0.5rem;
-  padding-bottom: 3.5rem;
-}
-
 @media (min-width: 768px) {
   .section {
-    padding-block: 7rem;
-  }
-
-  .section.section-compact-bottom {
-    padding-bottom: 4rem;
-  }
-
-  .section.gallery-section {
-    padding-bottom: 4.5rem;
-  }
-
-  .section.reviews-section {
-    padding-top: 0.75rem;
-    padding-bottom: 4.5rem;
+    padding-block: 7.5rem;
   }
 }
 

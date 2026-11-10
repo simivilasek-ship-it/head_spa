@@ -39,7 +39,7 @@ export function SectionDivider({
       <svg
         viewBox="0 0 1440 72"
         preserveAspectRatio="none"
-        className={`block h-5 w-full md:h-10 ${flip ? "-scale-x-100" : ""}`}
+        className={`block h-7 w-full md:h-12 ${flip ? "-scale-x-100" : ""}`}
       >
         <path d={paths[variant]} fill="currentColor" />
       </svg>

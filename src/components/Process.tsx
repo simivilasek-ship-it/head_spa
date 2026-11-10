@@ -16,7 +16,7 @@ export function Process() {
           title={copy.visit.title}
           center
         />
-        <ol className="mt-14 grid gap-12 md:grid-cols-3 md:gap-14">
+        <ol className="section-stack grid gap-12 md:grid-cols-3 md:gap-14">
           {visitSteps.map((item, index) => (
             <li key={item.step}>
               <Reveal

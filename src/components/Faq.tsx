@@ -15,7 +15,7 @@ export function Faq() {
         kicker={copy.faq.kicker}
         title={copy.faq.title}
       />
-      <div className="mt-8 divide-y divide-forest/10 border-y border-forest/10">
+      <div className="section-stack divide-y divide-forest/10 border-y border-forest/10">
         {faqs.slice(0, 5).map((item, index) => {
           const expanded = openIndex === index;
           const panelId = `${baseId}-panel-${index}`;
@@ -32,7 +32,7 @@ export function Faq() {
                   onClick={() =>
                     setOpenIndex((current) => (current === index ? null : index))
                   }
-                  className="flex min-h-12 w-full items-center justify-between gap-4 py-4 text-left text-[var(--text-base)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+                  className="flex min-h-12 w-full items-center justify-between gap-4 py-5 text-left text-[var(--text-base)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
                 >
                   <span>{item.q}</span>
                   <span
@@ -51,7 +51,7 @@ export function Faq() {
                 aria-labelledby={buttonId}
                 hidden={!expanded}
               >
-                <p className="pb-5 pr-10 text-[var(--text-sm)] leading-6 text-ink/70">
+                <p className="pb-6 pr-10 text-[var(--text-sm)] leading-7 text-ink/70">
                   {item.a}
                 </p>
               </div>

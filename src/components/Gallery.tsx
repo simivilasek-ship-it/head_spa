@@ -100,7 +100,7 @@ export function Gallery() {
           />
         </Reveal>
 
-        <Reveal className="mt-10 md:mt-12">
+        <Reveal className="section-stack">
           <div
             ref={stageRef}
             className="gallery-deck relative mx-auto w-full max-w-3xl outline-none"
@@ -165,7 +165,7 @@ export function Gallery() {
               })}
             </div>
 
-            <div className="mt-6 flex items-center justify-center gap-4 sm:mt-8">
+            <div className="mt-8 flex items-center justify-center gap-4 sm:mt-10">
               <button
                 type="button"
                 onClick={goPrev}

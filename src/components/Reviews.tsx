@@ -47,7 +47,7 @@ export function Reviews() {
     <section
       id="recenze"
       aria-labelledby="recenze-heading"
-      className="section reviews-section bg-ivory"
+      className="section bg-ivory"
     >
       <div className="wrap">
         <Reveal>
@@ -63,7 +63,7 @@ export function Reviews() {
         {view.mode === "full" && view.rating !== null ? (
           <>
             <Reveal delay={80}>
-              <div className="mt-8 flex flex-col items-center text-center md:mt-10">
+              <div className="section-stack flex flex-col items-center text-center">
                 <p
                   className="nums text-[clamp(3rem,9vw,4rem)] font-semibold leading-none tracking-[-0.03em] text-ink"
                   aria-hidden="true"
@@ -89,7 +89,7 @@ export function Reviews() {
                 role="list"
                 tabIndex={0}
                 aria-label="Recenze z Google"
-                className="-mx-5 mt-8 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:mx-0 md:mt-10 md:flex-wrap md:justify-center md:gap-6 md:overflow-visible md:px-0 md:pb-0"
+                className="-mx-5 mt-10 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:mx-0 md:mt-12 md:flex-wrap md:justify-center md:gap-6 md:overflow-visible md:px-0 md:pb-0"
               >
                 {view.reviews.map((review, index) => (
                   <li
@@ -108,19 +108,19 @@ export function Reviews() {
             </Reveal>
 
             <Reveal delay={160}>
-              <div className="mt-8 flex justify-center md:mt-10">
+              <div className="mt-10 flex justify-center md:mt-12">
                 <GoogleButtons />
               </div>
             </Reveal>
           </>
         ) : (
           <Reveal delay={80}>
-            <div className="mx-auto mt-8 flex max-w-md flex-col items-center text-center md:mt-10">
+            <div className="section-stack mx-auto flex max-w-md flex-col items-center text-center">
               <StarRating rating={null} size="h-7 w-7" />
-              <p className="mt-4 text-[var(--text-base)] text-ink/75">
+              <p className="mt-5 text-[var(--text-base)] text-ink/75">
                 Recenze a hvězdičky najdete na našem Google profilu.
               </p>
-              <div className="mt-8 flex w-full justify-center">
+              <div className="mt-10 flex w-full justify-center">
                 <GoogleButtons />
               </div>
             </div>
