@@ -62,10 +62,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-300 ${
           solid
-            ? "border-b border-forest/8 bg-ivory/90 text-ink backdrop-blur-md"
-            : "bg-transparent text-cream"
+            ? "border-b border-forest/8 bg-cream text-ink shadow-[0_8px_24px_rgba(52,68,58,0.07)]"
+            : "bg-transparent text-cream shadow-none"
         }`}
       >
         <nav
@@ -141,15 +141,6 @@ export function Header() {
         </div>
       </header>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 items-center gap-2 border-t border-cream/10 bg-forest px-4 py-3 md:hidden">
-        <BookingButton tone="dark" className="w-full" />
-        <a
-          href={site.phoneHref}
-          className="inline-flex min-h-11 items-center justify-center text-[var(--text-sm)] font-semibold text-sage-light transition-colors hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light"
-        >
-          Zavolat
-        </a>
-      </div>
     </>
   );
 }

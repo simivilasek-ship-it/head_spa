@@ -15,9 +15,8 @@ export const site = {
   instagram: "@sarya_headspa_opava",
   instagramUrl: "https://www.instagram.com/sarya_headspa_opava/",
   /**
-   * Ověřená stránka salonu na Notino (9. 11. 2026).
-   * NEXT_PUBLIC_BOOKING_URL ji může přepsat (viz .env.example).
-   * Výchozí URL je ve zdrojáku, aby ji dostal i build GitHub Pages bez env.
+   * Jediný zdroj URL pro všechna tlačítka „Objednat se“.
+   * Ověřená stránka Notino (9. 11. 2026) je i fallback, když env chybí.
    */
   bookingUrl:
     process.env.NEXT_PUBLIC_BOOKING_URL?.trim() ||
@@ -30,26 +29,24 @@ export const site = {
     label: "Otevřeno dle objednání",
     days: [] as { day: string; hours: string }[],
   },
+  /**
+   * Google recenze. Odkaz na vyhledání profilu; skóre jen z ověřeného Google Business.
+   * TODO: doplnit reálné hodnoty (NEXT_PUBLIC_GOOGLE_RATING a NEXT_PUBLIC_GOOGLE_REVIEW_COUNT).
+   * Dokud chybí, na webu se číslo ani plné hvězdy nezobrazují. Nepřebírat Notino.
+   */
+  googleReviewsUrl:
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL?.trim() ||
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Sarya Head Spa Opava Ostrožná 8")}`,
+  googleRating: process.env.NEXT_PUBLIC_GOOGLE_RATING?.trim() || "",
+  googleReviewCount: process.env.NEXT_PUBLIC_GOOGLE_REVIEW_COUNT?.trim() || "",
 } as const;
 
 export const bookingIsExternal = site.bookingUrl.startsWith("http");
 
-/**
- * Google recenze.
- * TODO: doplnit reálné hodnoty (hodnocení a počet). Dokud chybí, na webu se číslo nezobrazuje.
- * Nepřebírat hodnocení z Notina.
- */
-export const googleReviews = {
-  rating: null as number | null,
-  count: null as number | null,
-  href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${site.name}, ${site.street}, ${site.postalCode} ${site.city}`,
-  )}`,
-};
-
 export const nav = [
   { href: "#procedury", label: "Procedury" },
   { href: "#o-salonu", label: "O salonu" },
+  { href: "#recenze", label: "Recenze" },
   { href: "#poukazy", label: "Poukazy" },
   { href: "#kontakt", label: "Kontakt" },
 ] as const;
@@ -71,10 +68,10 @@ export const copy = {
     paragraphs: [
       "Jsem zakladatelkou Sarya Head Spa a ráda bych vám trochu přiblížila, jak to celé začalo.",
       "Vždycky jsem si přála vytvořit něco vlastního. Místo, které bude mít příjemnou atmosféru a kam budou ženy přicházet nejen za péčí o své vlasy, ale také za odpočinkem a chvílí jen pro sebe.",
+      "Vítám i muže. Pro kratší vlasy mám proceduru Sarya Man.",
       "Sama mám velmi ráda wellness rituály, chvíle klidu a vše, co pomáhá zpomalit a na chvíli vypnout od každodenních povinností. Právě tato osobní záliba mě přivedla k myšlence vytvořit Sarya Head Spa.",
       "Chtěla jsem spojit to, co mám sama ráda, s péčí o vlasy a pokožku hlavy. Vytvořit prostor, kde se budete cítit příjemně, uvolněně a kde si budete moci dopřát péči, kterou si zasloužíte.",
       "Je to pro mě nová profesní cesta, na které se neustále učím, vzdělávám a posouvám dál. Záleží mi na tom, aby každá návštěva byla příjemným zážitkem a abyste odcházely nejen s pocitem dobře opečovaných vlasů, ale také s lehčí hlavou a úsměvem.",
-      "Vítám i muže. Pro kratší vlasy mám proceduru Sarya Man.",
       "Budu se těšit na vaši návštěvu.",
     ],
   },
@@ -85,11 +82,23 @@ export const copy = {
     cta: "Objednat se",
   },
   cosmetics: {
-    body: "Pracujeme s kosmetikou Davines.",
+    body: "Pracujeme s kosmetikou Davines",
   },
   visit: {
     kicker: "Vaše návštěva",
     title: "Jak to probíhá",
+  },
+  reviews: {
+    kicker: "Google",
+    title: "Recenze",
+    subtitle: "Hodnocení přímo z Google — otevřete si celé recenze tam.",
+    ctaRead: "Číst na Google",
+    ctaWrite: "Napsat recenzi",
+  },
+  gallery: {
+    kicker: "Ukázky salonu",
+    title: "Galerie",
+    subtitle: "Prostor na Ostrožné — lehátko, umyvadlo a chvíle klidu.",
   },
   voucher: {
     kicker: "Pro vaše blízké",

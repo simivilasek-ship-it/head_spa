@@ -42,7 +42,6 @@ export function WhatsAppButton() {
   }, []);
 
   const hidden = scrollHidden || footerVisible;
-
   const number = site.whatsappNumber.replace(/\D/g, "");
   if (!number) return null;
 
@@ -56,7 +55,7 @@ export function WhatsAppButton() {
       aria-label="Napsat na WhatsApp"
       tabIndex={hidden ? -1 : undefined}
       aria-hidden={hidden}
-      className={`fixed right-3 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-cream text-forest shadow-lg shadow-forest/20 ring-2 ring-forest/15 transition-[background-color,opacity,transform] duration-300 hover:bg-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage bottom-[calc(4.25rem+12px+env(safe-area-inset-bottom))] md:bottom-[calc(16px+env(safe-area-inset-bottom))] ${
+      className={`whatsapp-fab fixed z-40 flex items-center justify-center rounded-full bg-cream text-forest shadow-lg shadow-forest/20 ring-2 ring-forest/15 transition-[background-color,opacity,transform] duration-300 hover:bg-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage ${
         hidden ? "pointer-events-none translate-y-3 opacity-0" : ""
       }`}
     >

@@ -34,12 +34,12 @@ export function SectionDivider({
     <div
       aria-hidden="true"
       role="presentation"
-      className={`relative z-[1] -my-px ${bg[from]} ${fill[to]}`}
+      className={`relative z-[1] -my-px leading-none ${bg[from]} ${fill[to]}`}
     >
       <svg
         viewBox="0 0 1440 72"
         preserveAspectRatio="none"
-        className={`block h-7 w-full md:h-12 ${flip ? "-scale-x-100" : ""}`}
+        className={`block h-5 w-full md:h-10 ${flip ? "-scale-x-100" : ""}`}
       >
         <path d={paths[variant]} fill="currentColor" />
       </svg>

@@ -1,106 +1,101 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-/**
- * Kurzor tečka + kroužek (jen desktop s jemným pointerem).
- * Na touch / reduced-motion se neaktivuje.
- */
+function canUseCustomCursor() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
+/** Stejný kurzor jako na zatepleni-vilasek.cz / simivilasek.cz */
 export function CustomCursor() {
-  const dotRef = useRef<HTMLSpanElement>(null);
-  const ringRef = useRef<HTMLSpanElement>(null);
-  const [active, setActive] = useState(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const canUse = () => fine.matches && !reduce.matches;
-
-    const syncActive = () => {
-      const on = canUse();
-      setActive(on);
-      document.documentElement.classList.toggle("has-custom-cursor", on);
-    };
-    syncActive();
-
-    fine.addEventListener("change", syncActive);
-    reduce.addEventListener("change", syncActive);
-    return () => {
-      fine.removeEventListener("change", syncActive);
-      reduce.removeEventListener("change", syncActive);
-      document.documentElement.classList.remove("has-custom-cursor");
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!active) return;
-
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-    let rx = x;
-    let ry = y;
-    let hovering = false;
-    let visible = false;
-    let raf = 0;
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const paint = () => {
-      rx += (x - rx) * 0.22;
-      ry += (y - ry) * 0.22;
-      dot.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%) scale(${hovering ? 1.55 : 1})`;
-      raf = requestAnimationFrame(paint);
+    let mouseX = -999;
+    let mouseY = -999;
+    let ringX = -999;
+    let ringY = -999;
+    let rafId = 0;
+    let hovered = false;
+    let attached = false;
+
+    const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
     };
 
-    const onMove = (event: MouseEvent) => {
-      x = event.clientX;
-      y = event.clientY;
-      if (!visible) {
-        visible = true;
-        dot.style.opacity = "1";
-        ring.style.opacity = "1";
+    const onOver = (e: MouseEvent) => {
+      const t = e.target as HTMLElement | null;
+      const isInteractive = Boolean(
+        t?.closest("a, button, [role=button], input, textarea, select, label"),
+      );
+      if (isInteractive && !hovered) {
+        hovered = true;
+        ring.classList.add("cursor-ring-hovered");
+      } else if (!isInteractive && hovered) {
+        hovered = false;
+        ring.classList.remove("cursor-ring-hovered");
       }
     };
 
-    const onOver = (event: MouseEvent) => {
-      const target = event.target as Element | null;
-      hovering = Boolean(
-        target?.closest(
-          "a, button, [role='button'], input, textarea, select, label, summary",
-        ),
-      );
-      document.documentElement.classList.toggle("cursor-hover", hovering);
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      ringX = lerp(ringX, mouseX, 0.12);
+      ringY = lerp(ringY, mouseY, 0.12);
+      ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      rafId = requestAnimationFrame(tick);
     };
 
-    const onLeave = () => {
-      visible = false;
-      dot.style.opacity = "0";
-      ring.style.opacity = "0";
-    };
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mouseover", onOver, { passive: true });
-    document.addEventListener("mouseleave", onLeave);
-    raf = requestAnimationFrame(paint);
-
-    return () => {
-      cancelAnimationFrame(raf);
+    const detach = () => {
+      if (!attached) return;
+      attached = false;
+      document.documentElement.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
-      document.removeEventListener("mouseleave", onLeave);
-      document.documentElement.classList.remove("cursor-hover");
+      cancelAnimationFrame(rafId);
+      ring.classList.remove("cursor-ring-hovered");
     };
-  }, [active]);
 
-  if (!active) return null;
+    const attach = () => {
+      if (attached) return;
+      attached = true;
+      document.documentElement.classList.add("has-custom-cursor");
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseover", onOver);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const sync = () => {
+      if (canUseCustomCursor()) attach();
+      else detach();
+    };
+
+    sync();
+    fine.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+
+    return () => {
+      fine.removeEventListener("change", sync);
+      reduce.removeEventListener("change", sync);
+      detach();
+    };
+  }, []);
 
   return (
-    <div className="custom-cursor" aria-hidden>
-      <span ref={ringRef} className="custom-cursor-ring" />
-      <span ref={dotRef} className="custom-cursor-dot" />
-    </div>
+    <>
+      <div ref={dotRef} className="cursor-dot" aria-hidden />
+      <div ref={ringRef} className="cursor-ring" aria-hidden />
+    </>
   );
 }

@@ -4,7 +4,7 @@ import { site } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="bg-forest pb-24 pt-12 text-[var(--text-sm)] text-cream/75 md:pb-12">
+    <footer className="bg-forest pb-10 pt-12 text-[var(--text-sm)] text-cream/75 md:pb-12">
       <div className="wrap">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="flex items-start gap-4">

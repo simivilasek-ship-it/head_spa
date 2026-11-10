@@ -46,7 +46,10 @@ export function Gallery() {
   };
 
   return (
-    <section aria-label="Galerie salonu" className="section gallery-section bg-cream">
+    <section
+      aria-label="Galerie salonu"
+      className="section gallery-section bg-cream"
+    >
       <ul
         ref={scrollerRef}
         className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-5 px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -83,7 +86,7 @@ export function Gallery() {
             />
           ))}
         </div>
-        <p className="nums text-[var(--text-xs)] text-sage" aria-live="polite">
+        <p className="nums text-[length:var(--text-xs)] text-sage" aria-live="polite">
           {index + 1}/{photos.length}
         </p>
       </div>

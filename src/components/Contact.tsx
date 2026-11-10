@@ -40,10 +40,10 @@ export function Contact() {
                 {...(card.href.startsWith("http")
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="card block px-5 py-4 transition-colors hover:border-forest/20"
+                className="card block px-5 py-4 transition-colors hover:border-forest/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
               >
                 <span className="kicker block text-forest/80">{card.label}</span>
-                <span className="nums mt-2 block text-[var(--text-base)] font-semibold tracking-[-0.01em] text-ink">
+                <span className="nums mt-2 block text-[var(--text-base)] font-semibold tracking-[-0.01em] text-ink underline decoration-forest/25 underline-offset-4">
                   {card.value}
                 </span>
               </a>

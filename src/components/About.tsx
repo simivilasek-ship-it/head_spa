@@ -1,5 +1,4 @@
 import { AboutText } from "@/components/AboutText";
-import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SiteImage } from "@/components/SiteImage";
 import { copy } from "@/lib/content";
@@ -14,17 +13,20 @@ export function About() {
     >
       <div className="wrap">
         <div className="grid items-start gap-8 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-12 lg:grid-cols-[minmax(0,22rem)_1fr]">
-          <Reveal>
-            <div className="relative aspect-[2/1] overflow-hidden rounded-[var(--radius)] md:aspect-[3/4]">
+          {/* Desktop: foto vlevo. Mobil: pod textem. */}
+          <div className="order-2 md:order-1">
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[var(--radius)] md:mx-0 md:max-w-none">
               <SiteImage
                 src={images.about.src}
                 alt={images.about.alt}
                 sizes="(max-width: 768px) 100vw, 22rem"
+                className="object-cover object-center"
+                priority
               />
             </div>
-          </Reveal>
+          </div>
 
-          <div>
+          <div className="order-1 md:order-2">
             <SectionHeader
               id="o-salonu-heading"
               kicker={copy.about.kicker}

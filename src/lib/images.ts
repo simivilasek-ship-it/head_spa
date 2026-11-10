@@ -5,28 +5,28 @@
 export const images = {
   hero: {
     src: "/images/hero.jpg",
-    alt: "Sarya Head Spa — procedurní lehátko a interiér salonu",
+    alt: "Interiér Sarya Head Spa: procedurní lehátko u okna a zelená stěna salonu",
   },
   about: {
     src: "/images/about.jpg",
-    alt: "Procedurní lehátko a head spa umyvadlo v salonu",
+    alt: "Head spa lehátko s umyvadlem a botaničkými obrazy v salonu na Ostrožné",
   },
   procedures: {
     "Sarya Basic": {
       src: "/images/procedure-basic.jpg",
-      alt: "Head spa umyvadlo s vodními tryskami",
+      alt: "Černé head spa umyvadlo s vodními tryskami připravené na mytí",
     },
     "Sarya Relax": {
       src: "/images/procedure-relax.jpg",
-      alt: "Připravené lehátko a kosmetický stolek",
+      alt: "Připravené lehátko, ručníky a kosmetický stolek před procedurou",
     },
     "Sarya Man": {
       src: "/images/procedure-man.jpg",
-      alt: "Prostor salonu s lehátkem a policí s ručníky",
+      alt: "Prostor salonu s lehátkem, policí s ručníky a ambientním světlem",
     },
     "Sarya Keratin Repair": {
       src: "/images/procedure-keratin.jpg",
-      alt: "Toaletní stolek s osvětleným zrcadlem",
+      alt: "Toaletní stolek s osvětleným zrcadlem a přípravky Davines",
     },
   },
   gallery: [
