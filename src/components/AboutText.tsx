@@ -6,6 +6,7 @@ const VISIBLE_ON_MOBILE = 2;
 
 export function AboutText({ paragraphs }: { paragraphs: readonly string[] }) {
   const [expanded, setExpanded] = useState(false);
+  const hasMore = paragraphs.length > VISIBLE_ON_MOBILE;
 
   return (
     <div className="mt-4">
@@ -21,15 +22,15 @@ export function AboutText({ paragraphs }: { paragraphs: readonly string[] }) {
           </p>
         ))}
       </div>
-      {expanded ? null : (
+      {hasMore && !expanded ? (
         <button
           type="button"
           onClick={() => setExpanded(true)}
-          className="mt-3 inline-flex min-h-11 items-center text-[var(--text-sm)] text-sage-light transition-colors hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light md:hidden"
+          className="mt-3 inline-flex min-h-11 items-center text-[var(--text-sm)] font-semibold text-cream underline decoration-cream/70 underline-offset-4 transition-colors hover:decoration-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light md:hidden"
         >
           Číst dál
         </button>
-      )}
+      ) : null}
     </div>
   );
 }

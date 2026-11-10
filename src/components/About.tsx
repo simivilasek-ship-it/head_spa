@@ -36,7 +36,7 @@ export function About() {
           </div>
         </div>
 
-        <p className="mt-10 inline-flex w-fit max-w-full items-center rounded-full border border-sage-light/35 bg-forest/40 px-5 py-2 text-[var(--text-sm)] text-cream/90">
+        <p className="mt-10 text-[var(--text-xs)] font-medium uppercase tracking-[0.16em] text-sage-light/90">
           {copy.cosmetics.body}
         </p>
       </div>

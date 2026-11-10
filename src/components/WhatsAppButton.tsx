@@ -5,21 +5,38 @@ import { site } from "@/lib/content";
 
 export function WhatsAppButton() {
   const [footerVisible, setFooterVisible] = useState(false);
+  const [contactVisible, setContactVisible] = useState(false);
 
   useEffect(() => {
     const footer = document.querySelector("footer");
-    if (!footer) return;
-    const observer = new IntersectionObserver(([entry]) =>
-      setFooterVisible(Boolean(entry?.isIntersecting)),
-    );
-    observer.observe(footer);
-    return () => observer.disconnect();
+    const contact = document.getElementById("kontakt");
+    const observers: IntersectionObserver[] = [];
+
+    if (footer) {
+      const footerObs = new IntersectionObserver(([entry]) =>
+        setFooterVisible(Boolean(entry?.isIntersecting)),
+      );
+      footerObs.observe(footer);
+      observers.push(footerObs);
+    }
+
+    if (contact) {
+      const contactObs = new IntersectionObserver(
+        ([entry]) => setContactVisible(Boolean(entry?.isIntersecting)),
+        { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+      );
+      contactObs.observe(contact);
+      observers.push(contactObs);
+    }
+
+    return () => observers.forEach((obs) => obs.disconnect());
   }, []);
 
   const number = site.whatsappNumber.replace(/\D/g, "");
   if (!number) return null;
 
   const href = `https://wa.me/${number}?text=${encodeURIComponent(site.whatsappMessage)}`;
+  const hideOnMobile = footerVisible || contactVisible;
 
   return (
     <a
@@ -27,9 +44,9 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Napsat na WhatsApp"
-      tabIndex={footerVisible ? -1 : undefined}
-      className={`fixed bottom-[5.5rem] right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-cream text-forest shadow-lg shadow-forest/20 ring-2 ring-forest/15 transition-[background-color,opacity,transform] duration-300 hover:bg-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:bottom-6 md:right-6 md:h-14 md:w-14 ${
-        footerVisible
+      tabIndex={hideOnMobile ? -1 : undefined}
+      className={`whatsapp-fab fixed right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-cream text-forest shadow-lg shadow-forest/20 ring-2 ring-forest/15 transition-[background-color,opacity,transform] duration-300 hover:bg-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:right-6 md:h-14 md:w-14 ${
+        hideOnMobile
           ? "pointer-events-none translate-y-4 opacity-0 md:pointer-events-auto md:translate-y-0 md:opacity-100"
           : ""
       }`}

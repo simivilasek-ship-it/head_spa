@@ -52,17 +52,17 @@ export function Hero() {
           {facts.map((item) => (
             <li
               key={item.value}
-              className="flex items-center gap-2.5 text-[var(--text-sm)] font-medium text-cream"
+              className="flex items-center gap-2.5 text-[var(--text-sm)] font-medium text-cream drop-shadow-[0_1px_8px_rgba(20,28,24,0.55)]"
             >
               <span
                 aria-hidden
-                className="flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full border border-cream/70 text-[9px] leading-none text-cream"
+                className="flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full border border-cream/85 text-[9px] leading-none text-cream"
               >
                 ✓
               </span>
               <span className="nums leading-none tracking-[0.01em]">
                 {item.value}
-                <span className="text-cream/75"> · {item.label}</span>
+                <span className="text-cream/90"> · {item.label}</span>
               </span>
             </li>
           ))}

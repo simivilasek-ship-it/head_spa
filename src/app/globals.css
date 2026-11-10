@@ -13,6 +13,7 @@
   --hero-green: 52 68 58;
   --header-h: 5rem;
   --logo-h: 3.85rem;
+  --mobile-cta-h: 5rem;
   --text-xs: 0.75rem;
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
@@ -55,6 +56,27 @@ body {
   line-height: 1.7;
   font-variant-numeric: lining-nums;
   -webkit-font-smoothing: antialiased;
+}
+
+/* rezervuje místo pod obsahem, ať CTA lišta nezakrývá patičku */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(
+      var(--mobile-cta-h) + env(safe-area-inset-bottom, 0px)
+    );
+  }
+}
+
+.whatsapp-fab {
+  bottom: calc(
+    var(--mobile-cta-h) + 1rem + env(safe-area-inset-bottom, 0px)
+  );
+}
+
+@media (min-width: 768px) {
+  .whatsapp-fab {
+    bottom: 1.5rem;
+  }
 }
 
 ::selection {
@@ -146,23 +168,27 @@ body {
     box-shadow: 0 16px 40px color-mix(in srgb, var(--forest) 11%, transparent);
   }
 
-  /* rovnoměrný zelený překryv přes celou hero fotku */
+  /* gradient: světlejší nahoře (salon vidět), tmavší dole pod textem */
   .hero-overlay {
-    background: rgb(var(--hero-green) / 0.85);
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--hero-green) / 0.42) 0%,
+      rgb(var(--hero-green) / 0.58) 42%,
+      rgb(var(--hero-green) / 0.82) 100%
+    );
   }
 
-  /* ztlumení fotky + jemný tmavý přechod pod textem */
   .hero-photo {
-    filter: brightness(0.88) contrast(0.94) saturate(0.92);
+    filter: brightness(0.92) contrast(0.96) saturate(0.95);
   }
 
   .hero-text-scrim {
     background: linear-gradient(
-      to right,
-      rgb(20 28 24 / 0.55) 0%,
-      rgb(20 28 24 / 0.32) 38%,
-      rgb(20 28 24 / 0.1) 62%,
-      transparent 82%
+      to top,
+      rgb(20 28 24 / 0.88) 0%,
+      rgb(20 28 24 / 0.58) 22%,
+      rgb(20 28 24 / 0.22) 48%,
+      transparent 68%
     );
   }
 }

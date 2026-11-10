@@ -15,9 +15,8 @@ export const site = {
   instagram: "@sarya_headspa_opava",
   instagramUrl: "https://www.instagram.com/sarya_headspa_opava/",
   /**
-   * TODO majitelka: doplnit přesný Notino odkaz do .env.local:
-   * NEXT_PUBLIC_BOOKING_URL=https://...
-   * Bez něj tlačítka „Objednat se“ vedou na kontaktní sekci (#kontakt).
+   * Jediný zdroj URL pro všechna tlačítka „Objednat se“ (BookingButton).
+   * Nastav NEXT_PUBLIC_BOOKING_URL v .env.local / CI — bez něj fallback #kontakt.
    */
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL?.trim() || "#kontakt",
   cosmetics: "Davines",
@@ -35,6 +34,7 @@ export const bookingIsExternal = site.bookingUrl.startsWith("http");
 export const nav = [
   { href: "#procedury", label: "Procedury" },
   { href: "#o-salonu", label: "O salonu" },
+  { href: "#recenze", label: "Recenze" },
   { href: "#poukazy", label: "Poukazy" },
   { href: "#kontakt", label: "Kontakt" },
 ] as const;
@@ -56,6 +56,7 @@ export const copy = {
     paragraphs: [
       "Jsem zakladatelkou Sarya Head Spa a ráda bych vám trochu přiblížila, jak to celé začalo.",
       "Vždycky jsem si přála vytvořit něco vlastního. Místo, které bude mít příjemnou atmosféru a kam budou ženy přicházet nejen za péčí o své vlasy, ale také za odpočinkem a chvílí jen pro sebe.",
+      "Stejně ráda tu vítám i muže — Sarya Man je péče uzpůsobená kratším vlasům a pánskému tempu.",
       "Sama mám velmi ráda wellness rituály, chvíle klidu a vše, co pomáhá zpomalit a na chvíli vypnout od každodenních povinností. Právě tato osobní záliba mě přivedla k myšlence vytvořit Sarya Head Spa.",
       "Chtěla jsem spojit to, co mám sama ráda, s péčí o vlasy a pokožku hlavy. Vytvořit prostor, kde se budete cítit příjemně, uvolněně a kde si budete moci dopřát péči, kterou si zasloužíte.",
       "Je to pro mě nová profesní cesta, na které se neustále učím, vzdělávám a posouvám dál. Záleží mi na tom, aby každá návštěva byla příjemným zážitkem a abyste odcházely nejen s pocitem dobře opečovaných vlasů, ale také s lehčí hlavou a úsměvem.",
@@ -69,11 +70,16 @@ export const copy = {
     cta: "Objednat se",
   },
   cosmetics: {
-    body: "Pracujeme s kosmetikou Davines.",
+    body: "Pracujeme s kosmetikou Davines",
   },
   visit: {
     kicker: "Vaše návštěva",
     title: "Jak to probíhá",
+  },
+  reviews: {
+    kicker: "Co říkají klienti",
+    title: "Recenze",
+    subtitle: "Krátké střípky z návštěv — doplníme reálnými zkušenostmi.",
   },
   voucher: {
     kicker: "Pro vaše blízké",
@@ -92,6 +98,25 @@ export const copy = {
     cta: "Objednat se",
   },
 } as const;
+
+/** TODO: nahradit zástupnými kartami reálné recenze (jméno, hodnocení, text). */
+export const reviews = [
+  {
+    name: "TODO — jméno 1",
+    rating: 5,
+    text: "TODO: krátká reálná recenze od klientky nebo klienta.",
+  },
+  {
+    name: "TODO — jméno 2",
+    rating: 5,
+    text: "TODO: krátká reálná recenze od klientky nebo klienta.",
+  },
+  {
+    name: "TODO — jméno 3",
+    rating: 5,
+    text: "TODO: krátká reálná recenze od klientky nebo klienta.",
+  },
+] as const;
 
 // Časy dle Notina: Basic/Man ~61, Relax ~91, Keratin ~101 min
 export const procedures = [

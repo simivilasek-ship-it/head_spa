@@ -28,6 +28,7 @@ jobs:
       - name: Build static export
         env:
           GITHUB_PAGES: "true"
+          NEXT_PUBLIC_BOOKING_URL: https://www.notino.cz/salony/sarya-head-spa_1/
         run: npm run build
       - name: Disable Jekyll
         run: touch out/.nojekyll

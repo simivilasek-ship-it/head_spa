@@ -7,7 +7,7 @@ export function Process() {
     <section
       id="postup"
       aria-labelledby="postup-heading"
-      className="section bg-mist"
+      className="section bg-mist !pb-6 md:!pb-8"
     >
       <div className="wrap">
         <SectionHeader
