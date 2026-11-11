@@ -11,7 +11,8 @@ export function JsonLd() {
     "@type": "BeautySalon",
     "@id": `${site.url}/#salon`,
     name: site.legalName,
-    description: "Head spa v Opavě. Masáž hlavy a péče o vlasovou pokožku.",
+    description:
+      "Head spa na Ostrožné 8 v Opavě. Mytí, masáž hlavy a péče o pokožku.",
     url: site.url,
     telephone: site.phone,
     image: `${site.url}/logo.png`,

@@ -142,7 +142,7 @@ export function Preloader() {
           </span>
         </p>
         <p className="preloader-tagline mt-8 text-[var(--text-sm)] tracking-wide">
-          Chvíle klidu začíná…
+          Ostrožná 8, Opava
         </p>
         <div className="preloader-line mx-auto mt-8" aria-hidden />
       </div>

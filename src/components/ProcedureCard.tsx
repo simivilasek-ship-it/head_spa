@@ -27,7 +27,7 @@ export function ProcedureCard({
         </span>
         {featured ? (
           <span className="rounded-md bg-forest px-2 py-0.5 text-[0.6875rem] font-semibold tracking-[0.06em] text-cream">
-            Nejoblíbenější
+            Nejčastější
           </span>
         ) : null}
       </div>

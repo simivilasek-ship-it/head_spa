@@ -9,7 +9,7 @@ export const site = {
   url: "https://sarya-headspa.cz",
   name: "Sarya Head Spa",
   legalName: "Sarya Head Spa Opava",
-  tagline: "Relax v srdci Opavy",
+  tagline: "Head spa na Ostrožné",
   city: "Opava",
   street: "Ostrožná 8",
   postalCode: "746 01",
@@ -55,11 +55,11 @@ export const nav = [
 
 export const copy = {
   hero: {
-    kicker: "Head spa · Opava",
-    title: "Relax v srdci Opavy",
+    kicker: "Salon na Ostrožné",
+    title: "Head spa v Opavě",
     highlights: ["Ostrožná 8, Opava", "Rezervace přes Notino", "Kosmetika Davines"],
     subtitle:
-      "Malý salon na Ostrožné. Mytí, masáž hlavy a péče o pokožku — 60 až 100 minut, podle toho, co zrovna potřebujete.",
+      "Malý salon u centra. Umyju vám vlasy, masíruju pokožku hlavy a nechám vás na chvíli vypnout. 60 až 100 minut, podle procedury.",
     ctaPrimary: "Objednat se",
     ctaSecondary: "Ceník",
   },
@@ -68,44 +68,43 @@ export const copy = {
     title: "O salonu",
     greeting: "Ahoj, já jsem Šárka.",
     paragraphs: [
-      "Jsem zakladatelkou Sarya Head Spa a ráda bych vám trochu přiblížila, jak to celé začalo.",
-      "Vždycky jsem si přála vytvořit něco vlastního. Místo, které bude mít příjemnou atmosféru a kam budou ženy přicházet nejen za péčí o své vlasy, ale také za odpočinkem a chvílí jen pro sebe.",
-      "Vítám i muže. Pro kratší vlasy mám proceduru Sarya Man.",
-      "Sama mám velmi ráda wellness rituály, chvíle klidu a vše, co pomáhá zpomalit a na chvíli vypnout od každodenních povinností. Právě tato osobní záliba mě přivedla k myšlence vytvořit Sarya Head Spa.",
-      "Chtěla jsem spojit to, co mám sama ráda, s péčí o vlasy a pokožku hlavy. Vytvořit prostor, kde se budete cítit příjemně, uvolněně a kde si budete moci dopřát péči, kterou si zasloužíte.",
-      "Je to pro mě nová profesní cesta, na které se neustále učím, vzdělávám a posouvám dál. Záleží mi na tom, aby každá návštěva byla příjemným zážitkem a abyste odcházely nejen s pocitem dobře opečovaných vlasů, ale také s lehčí hlavou a úsměvem.",
-      "Budu se těšit na vaši návštěvu.",
+      "Sarya Head Spa jsem založila sama. Chtěla jsem mít vlastní místo, kam se ženy zastaví nejen kvůli vlasům, ale i proto, že potřebují hodinu klidu.",
+      "Chodí i muži. Pro kratší vlasy mám Sarya Man.",
+      "Sama mám ráda, když můžu na chvíli vypnout. Proto to tady dělám tak, jak bych to chtěla sama: v klidu, bez spěchu a s péčí, která sedí na vlasy i na pokožku hlavy.",
+      "Pořád se učím. Záleží mi na tom, abyste odešli s lepšími vlasy a lehčí hlavou.",
+      "Budu se těšit.",
     ],
   },
   procedures: {
-    kicker: "Co nabízíme",
-    title: "Procedury a ceník",
-    subtitle: "Čtyři procedury. Od krátké péče po keratin — liší se hlavně délkou.",
+    kicker: "Ceník",
+    title: "Procedury",
+    subtitle:
+      "Čtyři varianty. Liší se délkou a tím, co v nich je. Termín berete přes Notino.",
     cta: "Objednat se",
   },
   cosmetics: {
-    body: "Pracujeme s kosmetikou Davines",
+    body: "Pracuju s kosmetikou Davines.",
   },
   visit: {
-    kicker: "Vaše návštěva",
-    title: "Jak to probíhá",
+    kicker: "Jak to chodí",
+    title: "Od rezervace po odchod",
   },
   reviews: {
     kicker: "Google",
     title: "Recenze",
-    subtitle: "Hodnocení přímo z Google — otevřete si celé recenze tam.",
-    ctaRead: "Číst na Google",
+    subtitle: "Co napsali lidé na Google. Celé texty jsou tam.",
+    ctaRead: "Otevřít Google",
     ctaWrite: "Napsat recenzi",
   },
   gallery: {
-    kicker: "Ukázky salonu",
-    title: "Galerie",
-    subtitle: "Prostor na Ostrožné — lehátko, umyvadlo a chvíle klidu.",
+    kicker: "Salon",
+    title: "Jak to u nás vypadá",
+    subtitle: "Ostrožná 8 — lehátko, umyvadlo, nic velkého.",
   },
   voucher: {
-    kicker: "Pro vaše blízké",
-    title: "Dárkové poukazy",
-    body: "Poukaz domluvíme po telefonu. Napíšeme na něj hodnotu nebo konkrétní proceduru.",
+    kicker: "Dárek",
+    title: "Poukazy",
+    body: "Stačí zavolat. Domluvíme hodnotu nebo konkrétní proceduru a připravím poukaz.",
     cta: "Zavolat",
   },
   faq: {
@@ -113,9 +112,9 @@ export const copy = {
     title: "Časté otázky",
   },
   contact: {
-    kicker: "Kde nás najdete",
-    title: "Kontakt",
-    body: "Nejjednodušší je rezervace přes Notino. Můžete taky zavolat nebo napsat na Instagram.",
+    kicker: "Kontakt",
+    title: "Kde nás najdete",
+    body: "Nejjednodušší je Notino. Když chcete, zavolejte nebo napište na Instagram.",
     cta: "Objednat se",
   },
 } as const;
@@ -127,28 +126,28 @@ export const procedures = [
     duration: "60 min",
     price: "1 100 Kč",
     description:
-      "Mytí Davines, masáž pokožky hlavy a výživná kúra. Na konci vlasy šetrně vysuším.",
+      "Mytí Davines, masáž pokožky hlavy a kúra. Na konci vlasy vysuším.",
   },
   {
     name: "Sarya Relax",
     duration: "90 min",
     price: "1 450 Kč",
     description:
-      "Delší péče: pohled trichologickou kamerou, čištění, masáž a napařování.",
+      "Delší verze: kamera na pokožku, čištění, masáž a napařování.",
   },
   {
     name: "Sarya Man",
     duration: "60 min",
     price: "900 Kč",
     description:
-      "Pro muže a kratší vlasy: mytí, masáž pokožky hlavy a péče podle stavu vlasů.",
+      "Pro muže a kratší vlasy. Mytí, masáž a péče podle stavu vlasů.",
   },
   {
     name: "Sarya Keratin Repair",
     duration: "100 min",
     price: "1 800 Kč",
     description:
-      "Keratinová kúra pro poškozené vlasy — hebčí omak a víc lesku.",
+      "Keratin na poškozené vlasy. Hebčí omak, víc lesku.",
   },
 ] as const;
 
@@ -165,48 +164,48 @@ export const facts = [
   { value: site.street, label: site.city },
   {
     value: `od ${cheapestProcedure.price}`,
-    label: "Sarya Man (pánská péče)",
+    label: "Sarya Man",
   },
 ] as const;
 
 export const visitSteps = [
   {
     step: "1",
-    title: "Domluva",
-    text: "Vyberete proceduru a termín. Když si nejste jistí, zavolejte — poradím.",
+    title: "Rezervace",
+    text: "Vyberete proceduru a termín na Notinu. Když si nejste jistí, zavolejte.",
   },
   {
     step: "2",
     title: "Péče",
-    text: "Mytí, práce s pokožkou a masáž hlavy. Když vám něco nebude sedět, stačí říct.",
+    text: "Lehnete si. Mytí, práce s pokožkou, masáž. Když něco nebude sedět, stačí říct.",
   },
   {
     step: "3",
-    title: "Na závěr",
-    text: "Sušení, krátké zakončení a prostor na otázky, kdybyste něco potřebovali.",
+    title: "Hotovo",
+    text: "Vlasy vysuším, krátce to uzavřeme a můžete jít.",
   },
 ] as const;
 
 export const faqs = [
   {
-    q: "Jak dlouho procedury trvají?",
-    a: "Basic a Man 60 minut, Relax 90 minut, Keratin Repair 100 minut.",
+    q: "Jak dlouho to trvá?",
+    a: "Basic a Man 60 minut, Relax 90, Keratin Repair 100.",
   },
   {
-    q: "V čem přijít?",
-    a: "V pohodlném oblečení. Vlasy speciálně upravovat nemusíte.",
+    q: "V čem mám přijít?",
+    a: "V čemkoli pohodlném. Vlasy speciálně upravovat nemusíte.",
   },
   {
     q: "Mám citlivou pokožku. Vadí to?",
-    a: "Napište to předem. Používám Davines a péči upravím.",
+    a: "Napište to předem. Používám Davines a postup upravím.",
   },
   {
-    q: "Hodí se péče i pro muže?",
-    a: "Ano. Sarya Man je péče pro muže a kratší vlasy.",
+    q: "Můžu přijít i jako muž?",
+    a: "Ano. Sarya Man je právě na kratší vlasy.",
   },
   {
-    q: "Jak zrušit nebo změnit termín?",
-    a: "Dejte vědět co nejdřív telefonem nebo přes Instagram, ať termín můžu nabídnout dál.",
+    q: "Jak zrušit nebo posunout termín?",
+    a: "Dejte vědět co nejdřív telefonem nebo přes Instagram, ať místo můžu nabídnout dál.",
     // TODO: doplnit přesné storno podmínky, až je majitelka potvrdí
   },
 ] as const;
