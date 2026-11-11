@@ -1,6 +1,6 @@
 /**
  * Static export na GitHub Pages potřebuje prefixovat cesty k obrázkům basePath.
- * (next/image + unoptimized jinak generuje `/images/...` bez `/sarka_head_spa`.)
+ * (next/image + unoptimized jinak generuje `/images/...` bez `/head_spa`.)
  */
 export default function imageLoader({
   src,

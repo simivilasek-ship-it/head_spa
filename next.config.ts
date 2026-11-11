@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-/** Project Pages URL: https://<user>.github.io/sarka_head_spa/ */
-const repo = "sarka_head_spa";
+/** Project Pages URL: https://<user>.github.io/head_spa/ */
+const repo = "head_spa";
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 const basePath = isGithubPages ? `/${repo}` : "";
 
