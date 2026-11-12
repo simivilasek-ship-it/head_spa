@@ -28,6 +28,7 @@ export function Procedures() {
                   duration={item.duration}
                   price={item.price}
                   description={item.description}
+                  bookingUrl={item.bookingUrl}
                   featured={item.name === "Sarya Basic"}
                 />
               </Reveal>

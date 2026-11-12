@@ -8,6 +8,7 @@ type SiteImageProps = Omit<ImageProps, "alt" | "fill"> & {
 export function SiteImage({
   alt,
   priority,
+  loading,
   sizes,
   quality,
   className = "",
@@ -18,7 +19,8 @@ export function SiteImage({
       alt={alt}
       fill
       priority={priority}
-      loading={priority ? undefined : "lazy"}
+      loading={priority ? undefined : (loading ?? "lazy")}
+      fetchPriority={priority ? "high" : undefined}
       sizes={sizes}
       quality={quality ?? (priority ? 80 : 75)}
       className={`object-cover ${className}`.trim()}

@@ -13,6 +13,9 @@ const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&z=16&hl=cs&outpu
 export function Contact() {
   const cards = [
     { label: "Telefon", value: site.phone, href: site.phoneHref },
+    ...(site.email && site.emailHref
+      ? [{ label: "E-mail", value: site.email, href: site.emailHref }]
+      : []),
     { label: "Instagram", value: site.instagram, href: site.instagramUrl },
     {
       label: "Adresa",

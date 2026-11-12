@@ -18,8 +18,25 @@ export default function PrivacyPage() {
           {/* TODO: nechat zkontrolovat právníkem před ostrým spuštěním */}
           <div className="mt-8 space-y-5 text-[var(--text-base)] leading-8 text-ink/90">
             <p>
-              Správcem osobních údajů je {site.legalName}, {site.street},{" "}
-              {site.city}. Kontakt: {site.phone}.
+              Správcem osobních údajů je{" "}
+              {site.operatorName || site.legalName}
+              {site.ico ? `, IČO ${site.ico}` : ""}, {site.street},{" "}
+              {site.postalCode} {site.city}. Kontakt:{" "}
+              <a href={site.phoneHref} className="underline underline-offset-2">
+                {site.phone}
+              </a>
+              {site.email && site.emailHref ? (
+                <>
+                  ,{" "}
+                  <a
+                    href={site.emailHref}
+                    className="underline underline-offset-2"
+                  >
+                    {site.email}
+                  </a>
+                </>
+              ) : null}
+              .
             </p>
             <p>
               Zpracováváme údaje potřebné k rezervaci (jméno, telefon, e-mail,

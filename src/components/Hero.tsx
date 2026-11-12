@@ -33,7 +33,7 @@ export function Hero() {
         >
           {copy.hero.title}
         </h1>
-        <p className="hero-enter hero-enter-3 mt-5 max-w-lg text-[var(--text-sm)] leading-7 text-cream/95 md:text-[1.125rem] md:leading-8">
+        <p className="hero-enter hero-enter-3 hero-subtitle mt-5 max-w-lg text-[var(--text-sm)] leading-7 text-cream/95 md:text-[1.125rem] md:leading-8">
           {copy.hero.subtitle}
         </p>
         <div className="hero-enter hero-enter-4 mt-8 flex flex-wrap items-center gap-3 md:gap-4">

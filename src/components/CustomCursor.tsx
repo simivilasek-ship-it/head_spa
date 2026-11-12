@@ -2,17 +2,26 @@
 
 import { useEffect, useRef } from "react";
 
+/**
+ * Feature flag: vlastní kurzor (tečka + kroužek).
+ * Vypnout = false, pokud ruší čitelnost textu.
+ */
+export const ENABLE_CUSTOM_CURSOR = true;
+
 function canUseCustomCursor() {
+  if (!ENABLE_CUSTOM_CURSOR) return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 }
 
-/** Stejný kurzor jako na zatepleni-vilasek.cz / simivilasek.cz */
+/** Volitelný kurzor. Nad odkazy/tlačítky/mapou/formáři zůstává systémový kurzor. */
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!ENABLE_CUSTOM_CURSOR) return;
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
@@ -37,7 +46,9 @@ export function CustomCursor() {
     const onOver = (e: MouseEvent) => {
       const t = e.target as HTMLElement | null;
       const isInteractive = Boolean(
-        t?.closest("a, button, [role=button], input, textarea, select, label"),
+        t?.closest(
+          "a, button, [role=button], input, textarea, select, label, iframe",
+        ),
       );
       if (isInteractive && !hovered) {
         hovered = true;
@@ -91,6 +102,8 @@ export function CustomCursor() {
       detach();
     };
   }, []);
+
+  if (!ENABLE_CUSTOM_CURSOR) return null;
 
   return (
     <>

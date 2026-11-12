@@ -4,9 +4,9 @@ import { getReviewsView, validIsoDate } from "@/lib/reviews";
 export function JsonLd() {
   // Stejná data a stejná pravidla jako sekce Recenze, aby JSON-LD odpovídal viditelnému obsahu.
   const reviews = getReviewsView();
-  const showReviews = reviews.mode === "full" && reviews.rating !== null;
+  const showReviews = reviews.enabled && reviews.rating !== null;
 
-  const salon = {
+  const salon: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
     "@id": `${site.url}/#salon`,
@@ -35,8 +35,37 @@ export function JsonLd() {
         itemOffered: { "@type": "Service", name: item.name },
       })),
     },
-    // Otevírací doba je „dle objednání“ — bez konkrétních dnů a časů se do schema.org nezapisuje.
+    // Otevírací doba je „dle objednání“: bez konkrétních dnů a časů se do schema.org nezapisuje.
   };
+
+  if (site.operatorName) {
+    salon.founder = {
+      "@type": "Person",
+      name: site.operatorName,
+    };
+  }
+
+  if (showReviews && reviews.rating !== null) {
+    salon.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: reviews.rating,
+      bestRating: 5,
+      worstRating: 1,
+      ...(reviews.count !== null ? { reviewCount: reviews.count } : {}),
+    };
+    salon.review = reviews.reviews.map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.name },
+      reviewBody: r.text,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: r.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      ...(validIsoDate(r.date) ? { datePublished: r.date } : {}),
+    }));
+  }
 
   const faqPage = {
     "@context": "https://schema.org",

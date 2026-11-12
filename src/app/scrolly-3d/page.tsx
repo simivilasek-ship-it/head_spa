@@ -36,7 +36,7 @@ export default function Scrolly3dPage() {
       <ScrollDrivenScene />
 
       <div className="flex h-[50vh] items-center justify-center px-6 text-center text-cream/70">
-        Konec scény — můžete se vrátit nahoru nebo na hlavní web.
+        Konec scény. Můžete se vrátit nahoru nebo na hlavní web.
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ export function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="section bg-ivory"
+      className="section section-tight bg-ivory"
     >
       <div className="wrap max-w-3xl">
         <Reveal>

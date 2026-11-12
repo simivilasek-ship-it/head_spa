@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { bookingIsExternal, copy, site } from "@/lib/content";
+import { copy, site } from "@/lib/content";
 
 type ButtonProps = {
   href: string;
@@ -54,15 +54,21 @@ export function BookingButton({
   tone = "light",
   className = "",
   onClick,
+  /** Prázdné / neuvedené = fallback `site.bookingUrl`. */
+  href,
 }: {
   tone?: Tone;
   className?: string;
   onClick?: () => void;
+  href?: string;
 }) {
+  const bookingHref = href?.trim() || site.bookingUrl;
+  const external = bookingHref.startsWith("http");
+
   return (
     <Button
-      href={site.bookingUrl}
-      external={bookingIsExternal}
+      href={bookingHref}
+      external={external}
       tone={tone}
       className={className}
       onClick={onClick}

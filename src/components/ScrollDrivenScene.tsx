@@ -183,7 +183,7 @@ function HtmlChapters({ progressRef }: { progressRef: RefObject<ProgressApi> }) 
           Péče, která má tvar
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-cream/85 md:text-[0.95rem]">
-          Scrollujte dál — objekt se otočí, ustoupí doleva a v závěru odhalí
+          Scrollujte dál: objekt se otočí, ustoupí doleva a v závěru odhalí
           detail materiálu.
         </p>
       </div>

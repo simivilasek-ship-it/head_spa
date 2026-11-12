@@ -121,6 +121,7 @@ export function Gallery() {
 
                 const abs = Math.abs(offset);
                 const hidden = abs > 2;
+                const near = abs <= 2;
 
                 return (
                   <button
@@ -134,7 +135,7 @@ export function Gallery() {
                         "--offset": offset,
                         "--abs": abs,
                         zIndex: hidden ? 0 : 10 - abs,
-                        opacity: hidden ? 0 : 1 - abs * 0.18,
+                        opacity: hidden ? 0 : offset === 0 ? 1 : 0.85,
                         pointerEvents: hidden ? "none" : "auto",
                       } as CSSProperties
                     }
@@ -156,6 +157,7 @@ export function Gallery() {
                       <SiteImage
                         src={photo.src}
                         alt={photo.alt}
+                        loading={near ? "eager" : "lazy"}
                         sizes="(max-width: 640px) 78vw, 24rem"
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                       />

@@ -35,7 +35,7 @@ export function About() {
             />
             <p className="subheading mt-6 text-cream">{copy.about.greeting}</p>
             <AboutText paragraphs={copy.about.paragraphs} />
-            <p className="mt-5 text-[var(--text-sm)] leading-6 text-cream/80">
+            <p className="mt-4 max-w-[65ch] text-[var(--text-sm)] leading-6 text-cream/80">
               {copy.cosmetics.body}
             </p>
           </div>

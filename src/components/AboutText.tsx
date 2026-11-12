@@ -10,17 +10,15 @@ export function AboutText({ paragraphs }: { paragraphs: readonly string[] }) {
   const hasMore = paragraphs.length > VISIBLE_ON_MOBILE;
 
   return (
-    <div className="mt-5">
-      <div className="text-[var(--text-base)] leading-7 text-cream/90 lg:columns-2 lg:gap-10">
+    <div className="mt-5 max-w-[65ch]">
+      <div className="space-y-3 text-[var(--text-base)] leading-7 text-cream/90">
         {paragraphs.map((paragraph, index) => {
           const collapsed = index >= VISIBLE_ON_MOBILE && !expanded;
           return (
             <p
               key={paragraph}
               id={index === VISIBLE_ON_MOBILE ? restId : undefined}
-              className={`mb-5 break-inside-avoid ${
-                collapsed ? "hidden md:block" : ""
-              }`}
+              className={collapsed ? "hidden md:block" : undefined}
             >
               {paragraph}
             </p>

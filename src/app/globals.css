@@ -73,30 +73,40 @@ a {
   height: 48px;
 }
 
-/* kurzor jako na zatepleni-vilasek.cz / simivilasek.cz */
+/* Vlastní kurzor: zapnout/vypnout konstantou ENABLE_CUSTOM_CURSOR v CustomCursor.tsx */
 @media (hover: hover) and (pointer: fine) {
   html.has-custom-cursor,
-  html.has-custom-cursor body,
+  html.has-custom-cursor body {
+    cursor: none;
+  }
+
+  /* nad interaktivními prvky a mapou normální kurzor */
   html.has-custom-cursor a,
   html.has-custom-cursor button,
   html.has-custom-cursor [role="button"],
   html.has-custom-cursor input,
   html.has-custom-cursor textarea,
   html.has-custom-cursor select,
-  html.has-custom-cursor label {
-    cursor: none;
+  html.has-custom-cursor label,
+  html.has-custom-cursor iframe {
+    cursor: pointer;
+  }
+
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea {
+    cursor: text;
   }
 }
 
 .cursor-dot {
   pointer-events: none;
   position: fixed;
-  top: -4px;
-  left: -4px;
-  width: 8px;
-  height: 8px;
+  top: -3px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #e4e4e7;
+  background: rgba(228, 228, 231, 0.55);
   z-index: 9999;
   will-change: transform;
   transform: translate(-9999px, -9999px);
@@ -106,12 +116,12 @@ a {
 .cursor-ring {
   pointer-events: none;
   position: fixed;
-  top: -18px;
-  left: -18px;
-  width: 36px;
-  height: 36px;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 1.5px solid rgba(228, 228, 231, 0.7);
+  border: 1px solid rgba(228, 228, 231, 0.4);
   z-index: 9998;
   will-change: transform;
   transform: translate(-9999px, -9999px);
@@ -126,18 +136,18 @@ a {
 }
 
 .cursor-ring-hovered {
-  width: 56px;
-  height: 56px;
-  top: -28px;
-  left: -28px;
-  border-color: rgba(250, 250, 250, 0.95);
-  background: rgba(250, 250, 250, 0.08);
+  width: 28px;
+  height: 28px;
+  top: -14px;
+  left: -14px;
+  border-color: rgba(250, 250, 250, 0.55);
+  background: rgba(250, 250, 250, 0.05);
 }
 
 @media (hover: none), (pointer: coarse) {
   .cursor-dot,
   .cursor-ring {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -157,32 +167,36 @@ a {
   font-variant-numeric: lining-nums;
 }
 
-/* jednotný vzduch mezi sekcemi — celý web stejně */
+/* jednotný vzduch mezi sekcemi (cca −25 % oproti předchozímu) */
 .section {
-  padding-block: 5.5rem;
+  padding-block: 4rem;
 }
 
 .section.gallery-section {
   overflow: hidden;
 }
 
+.section.section-tight {
+  padding-block: 3rem;
+}
+
 /* mezera header → obsah sekce */
 .section-stack {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 @media (min-width: 768px) {
   .section-stack {
-    margin-top: 3.5rem;
+    margin-top: 3rem;
   }
 }
 
-/* umělecký deck — nakloněné karty */
+/* umělecký deck: mírnější náklon, boční karty víc vidět */
 .gallery-card {
   transform: translate(-50%, -50%)
-    translateX(calc(var(--offset) * 4.75rem))
-    rotate(calc(var(--offset) * 7deg))
-    scale(calc(1 - var(--abs) * 0.08));
+    translateX(calc(var(--offset) * 5.5rem))
+    rotate(calc(var(--offset) * 5deg))
+    scale(calc(1 - var(--abs) * 0.05));
   transition:
     transform 560ms var(--ease-out),
     opacity 420ms var(--ease-out),
@@ -191,30 +205,27 @@ a {
 }
 
 .gallery-card-active {
-  box-shadow: 0 22px 48px rgba(52, 68, 58, 0.22);
+  box-shadow: 0 18px 40px rgba(52, 68, 58, 0.18);
 }
 
-/* swipe vodorovně v decku, svislé scrollování stránky zůstává */
 .gallery-deck {
   touch-action: pan-y;
 }
 
-/* mobil (~390px): menší náklon a posun, ať boční karty neuřezává okraj */
 @media (max-width: 639px) {
   .gallery-card {
     width: min(72%, 18rem);
     transform: translate(-50%, -50%)
-      translateX(calc(var(--offset) * 2.6rem))
-      rotate(calc(var(--offset) * 3.5deg))
-      scale(calc(1 - var(--abs) * 0.09));
-    box-shadow: 0 12px 28px rgba(52, 68, 58, 0.16);
+      translateX(calc(var(--offset) * 3.1rem))
+      rotate(calc(var(--offset) * 3deg))
+      scale(calc(1 - var(--abs) * 0.06));
+    box-shadow: 0 12px 28px rgba(52, 68, 58, 0.14);
   }
 
   .gallery-card-active {
-    box-shadow: 0 16px 34px rgba(52, 68, 58, 0.22);
+    box-shadow: 0 14px 30px rgba(52, 68, 58, 0.18);
   }
 
-  /* druhá vrstva na mobilu skrytá, aby nic neuřezávalo */
   .gallery-card-far {
     opacity: 0 !important;
     pointer-events: none !important;
@@ -224,9 +235,9 @@ a {
 @media (min-width: 768px) {
   .gallery-card {
     transform: translate(-50%, -50%)
-      translateX(calc(var(--offset) * 6.5rem))
-      rotate(calc(var(--offset) * 8deg))
-      scale(calc(1 - var(--abs) * 0.07));
+      translateX(calc(var(--offset) * 7rem))
+      rotate(calc(var(--offset) * 6deg))
+      scale(calc(1 - var(--abs) * 0.04));
   }
 }
 
@@ -238,7 +249,11 @@ a {
 
 @media (min-width: 768px) {
   .section {
-    padding-block: 7.5rem;
+    padding-block: 5.5rem;
+  }
+
+  .section.section-tight {
+    padding-block: 4rem;
   }
 }
 
@@ -312,23 +327,34 @@ a {
     box-shadow: 0 16px 40px color-mix(in srgb, var(--forest) 11%, transparent);
   }
 
-  /* zelený filtr ~85 % — fotka jen lehce prosvítá */
+  /* gradient: fotka vidět, text vlevo/dole s dostatečným kontrastem */
   .hero-overlay {
-    background: rgb(var(--hero-green) / 0.85);
+    background:
+      linear-gradient(
+        to right,
+        rgb(var(--hero-green) / 0.78) 0%,
+        rgb(var(--hero-green) / 0.42) 42%,
+        rgb(var(--hero-green) / 0.18) 72%,
+        rgb(var(--hero-green) / 0.08) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgb(20 28 24 / 0.72) 0%,
+        rgb(20 28 24 / 0.28) 38%,
+        transparent 68%
+      );
   }
 
   .hero-photo {
-    filter: brightness(0.92) contrast(0.96) saturate(0.95);
+    filter: none;
   }
 
   .hero-text-scrim {
-    background: linear-gradient(
-      to top,
-      rgb(20 28 24 / 0.88) 0%,
-      rgb(20 28 24 / 0.58) 22%,
-      rgb(20 28 24 / 0.22) 48%,
-      transparent 68%
-    );
+    display: none;
+  }
+
+  .hero-subtitle {
+    text-wrap: balance;
   }
 
   .btn-press {

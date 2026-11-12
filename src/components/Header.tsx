@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BookingButton } from "@/components/Button";
 import { Logo } from "@/components/Logo";
-import { nav, site } from "@/lib/content";
+import { getNav, site } from "@/lib/content";
 
 function hrefFor(linkHref: string, onHome: boolean) {
   return onHome ? linkHref : `/${linkHref}`;
@@ -58,6 +58,7 @@ export function Header() {
   }, [open, close]);
 
   const solid = scrolled || open || !onHome;
+  const navItems = getNav();
 
   return (
     <>
@@ -82,7 +83,7 @@ export function Header() {
           </a>
 
           <ul className="hidden items-center gap-8 md:flex">
-            {nav.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={hrefFor(item.href, onHome)}
@@ -129,7 +130,7 @@ export function Header() {
           aria-label={open ? "Mobilní menu" : undefined}
         >
           <ul className="wrap flex flex-col py-3">
-            {nav.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={hrefFor(item.href, onHome)}

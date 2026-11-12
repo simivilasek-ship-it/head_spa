@@ -7,7 +7,7 @@ export function Voucher() {
     <section
       id="poukazy"
       aria-labelledby="poukazy-heading"
-      className="section bg-cream"
+      className="section section-tight bg-cream"
     >
       <div className="wrap">
         <Reveal>

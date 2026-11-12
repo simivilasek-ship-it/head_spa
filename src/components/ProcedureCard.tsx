@@ -6,6 +6,8 @@ export type ProcedureCardProps = {
   price: string;
   description: string;
   featured?: boolean;
+  /** Prázdné = fallback na stránku salonu na Notinu. */
+  bookingUrl?: string;
 };
 
 export function ProcedureCard({
@@ -14,6 +16,7 @@ export function ProcedureCard({
   price,
   description,
   featured = false,
+  bookingUrl = "",
 }: ProcedureCardProps) {
   return (
     <article
@@ -46,7 +49,7 @@ export function ProcedureCard({
       </p>
 
       <div className="mt-auto pt-7">
-        <BookingButton className="w-full" />
+        <BookingButton className="w-full" href={bookingUrl} />
       </div>
     </article>
   );
