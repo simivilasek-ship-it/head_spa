@@ -1,3 +1,6 @@
+"use client";
+
+import { useId, useState } from "react";
 import { BookingButton } from "@/components/Button";
 
 export type ProcedureCardProps = {
@@ -12,6 +15,8 @@ export type ProcedureCardProps = {
   bookingUrl?: string;
 };
 
+const PREVIEW_STEPS = 2;
+
 export function ProcedureCard({
   name,
   duration,
@@ -22,6 +27,12 @@ export function ProcedureCard({
   featured = false,
   bookingUrl = "",
 }: ProcedureCardProps) {
+  const [expanded, setExpanded] = useState(false);
+  const stepsId = useId();
+  const hasMore = steps.length > PREVIEW_STEPS;
+  const visibleSteps =
+    expanded || !hasMore ? steps : steps.slice(0, PREVIEW_STEPS);
+
   return (
     <article
       className={`card card-hover flex h-full flex-col p-6 md:p-7 ${
@@ -59,14 +70,37 @@ export function ProcedureCard({
       </p>
 
       {steps.length > 0 ? (
-        <ul className="mt-4 flex-1 space-y-2 text-[var(--text-sm)] leading-6 text-ink/75">
-          {steps.map((step) => (
-            <li key={step} className="flex gap-2">
-              <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-sage" />
-              <span>{step}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-4 flex-1">
+          <ul
+            id={stepsId}
+            className="space-y-2 text-[var(--text-sm)] leading-6 text-ink/75"
+          >
+            {visibleSteps.map((step) => (
+              <li key={step} className="flex gap-2">
+                <span
+                  aria-hidden
+                  className="mt-2 h-1 w-1 shrink-0 rounded-full bg-sage"
+                />
+                <span>{step}</span>
+              </li>
+            ))}
+          </ul>
+
+          {hasMore ? (
+            <button
+              type="button"
+              aria-expanded={expanded}
+              aria-controls={stepsId}
+              onClick={() => setExpanded((value) => !value)}
+              className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-[var(--text-sm)] font-semibold text-forest underline decoration-forest/30 underline-offset-4 transition-colors hover:decoration-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+            >
+              <span>{expanded ? "Zobrazit méně" : "Celý průběh"}</span>
+              <span aria-hidden className="text-forest/60">
+                {expanded ? "↑" : "↓"}
+              </span>
+            </button>
+          ) : null}
+        </div>
       ) : (
         <div className="flex-1" />
       )}
