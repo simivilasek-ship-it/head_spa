@@ -26,6 +26,8 @@ export const site = {
   whatsappMessage: "Dobrý den, chtěl/a bych se objednat na head spa.",
   instagram: "@sarya_headspa_opava",
   instagramUrl: "https://www.instagram.com/sarya_headspa_opava/",
+  facebook: "Sarya Head Spa",
+  facebookUrl: "https://www.facebook.com/p/Sarya-Head-Spa-61593736953785/",
   /**
    * Fallback URL pro „Objednat se“ (stránka salonu na Notinu).
    * Konkrétní procedury můžou mít vlastní bookingUrl níže.

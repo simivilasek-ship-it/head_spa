@@ -27,6 +27,33 @@ function InstagramIcon({ className = "" }: { className?: string }) {
   );
 }
 
+function FacebookIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+      width={18}
+      height={18}
+    >
+      <path
+        d="M14 9h2.5V6.5H14c-1.7 0-3 1.3-3 3V12H9v2.5h2V21h2.5v-6.5H16L16.5 12H13.5v-1.5c0-.6.4-1 1-1Z"
+        fill="currentColor"
+      />
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="3"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="bg-forest pb-12 pt-14 text-[var(--text-sm)] text-cream/75 md:pb-14 md:pt-16">
@@ -72,6 +99,17 @@ export function Footer() {
                 >
                   <InstagramIcon />
                   <span>{site.instagram}</span>
+                </a>
+              </p>
+              <p>
+                <a
+                  href={site.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage-light"
+                >
+                  <FacebookIcon />
+                  <span>{site.facebook}</span>
                 </a>
               </p>
             </div>

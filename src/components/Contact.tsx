@@ -17,6 +17,7 @@ export function Contact() {
       ? [{ label: "E-mail", value: site.email, href: site.emailHref }]
       : []),
     { label: "Instagram", value: site.instagram, href: site.instagramUrl },
+    { label: "Facebook", value: site.facebook, href: site.facebookUrl },
     {
       label: "Adresa",
       value: `${site.street}, ${site.city}`,

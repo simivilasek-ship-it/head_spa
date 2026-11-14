@@ -51,7 +51,7 @@ export function JsonLd() {
       "Davines",
       "keratin",
     ],
-    sameAs: [site.instagramUrl],
+    sameAs: [site.instagramUrl, site.facebookUrl],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Procedury head spa Opava",
