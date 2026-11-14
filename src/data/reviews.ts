@@ -2,8 +2,8 @@
  * JEDINÝ ZDROJ recenzí pro web (sekce Recenze, JSON-LD, odkazy).
  *
  * Ruční doplnění: recenze musí dodat majitelka se souhlasem autorů.
- * Nevymýšlet jména ani texty. Dokud je REVIEWS prázdné, sekce Recenze
- * (včetně položky v menu) se na webu vůbec nevykreslí.
+ * Nevymýšlet jména ani texty. Prázdné REVIEWS = simple mód
+ * (obrysové hvězdy + odkaz na Google), sekce i menu zůstávají.
  */
 
 export interface Review {

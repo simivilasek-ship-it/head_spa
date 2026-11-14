@@ -7,7 +7,9 @@ import {
 } from "@/data/reviews";
 
 export interface ReviewsView {
-  /** true = sekce Recenze se má vykreslit (jsou karty). */
+  /** full = hodnocení + karty; simple = obrysové hvězdy + odkaz na Google. */
+  mode: "full" | "simple";
+  /** true = sekce Recenze i položka v menu. */
   enabled: boolean;
   rating: number | null;
   count: number | null;
@@ -27,8 +29,8 @@ function isValidReview(r: Review): boolean {
 }
 
 /**
- * Jediné místo, které z dat rozhoduje, jestli Recenze existují.
- * Prázdné REVIEWS = sekce, menu i kotva #recenze pryč.
+ * Jediné místo pro rozhodnutí o Recenzích (UI + JSON-LD).
+ * Bez karet → simple (hvězdy + Google tlačítka), sekce zůstává.
  */
 export function getReviewsView(): ReviewsView {
   const rating =
@@ -54,12 +56,15 @@ export function getReviewsView(): ReviewsView {
       source: r.source.trim(),
     }));
 
+  const full = rating !== null && reviews.length > 0;
+
   return {
-    enabled: reviews.length > 0,
-    rating,
-    count,
+    mode: full ? "full" : "simple",
+    enabled: true,
+    rating: full ? rating : null,
+    count: full ? count : null,
     reviewsUrl: GOOGLE_REVIEWS_URL.trim(),
-    reviews,
+    reviews: full ? reviews : [],
   };
 }
 

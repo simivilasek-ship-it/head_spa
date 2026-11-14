@@ -1,10 +1,13 @@
 import { GOOGLE_REVIEWS_URL, GOOGLE_WRITE_REVIEW_URL } from "@/data/reviews";
 import { getReviewsView } from "@/lib/reviews";
 
-const googleReviewsUrl = GOOGLE_REVIEWS_URL.trim();
+const googleMapsSearch =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent("Sarya Head Spa Opava Ostrožná 8");
+
+const googleReviewsUrl = GOOGLE_REVIEWS_URL.trim() || googleMapsSearch;
 
 export const site = {
-  // Finální doménu potvrdit před ostrým spuštěním.
   url: "https://sarya-headspa.cz",
   name: "Sarya Head Spa",
   legalName: "Sarya Head Spa Opava",
@@ -51,7 +54,7 @@ const navBase = [
   { href: "#kontakt", label: "Kontakt" },
 ] as const;
 
-/** Navigace bez Recenze, když nejsou data. */
+/** Navigace. Recenze zůstávají i ve simple módu (odkaz na Google). */
 export function getNav() {
   const showReviews = getReviewsView().enabled;
   return navBase.filter((item) => showReviews || item.href !== "#recenze");
@@ -106,8 +109,7 @@ export const copy = {
   gallery: {
     kicker: "Salon",
     title: "Jak to u nás vypadá",
-    subtitle:
-      "Ostrožná 8. Jedna místnost, lehátko a umyvadlo, ve kterých se dobře odpočívá.",
+    subtitle: "Ostrožná 8: lehátko, umyvadlo, nic velkého.",
   },
   voucher: {
     kicker: "Dárek",

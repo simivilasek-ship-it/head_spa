@@ -21,8 +21,25 @@ const serif = Gelasio({
   weight: ["400", "500", "600", "700"],
 });
 
+const title = "Head Spa Opava | Sarya Head Spa";
 const description =
-  "Head spa v Opavě na Ostrožné 8. Mytí, masáž hlavy a péče o pokožku. Termín přes Notino.";
+  "Head spa Opava na Ostrožné 8. Mytí vlasů, masáž hlavy a péče o pokožku. Headspa v centru Opavy, rezervace přes Notino.";
+
+const keywords = [
+  "head spa Opava",
+  "headspa Opava",
+  "head spa",
+  "masáž hlavy Opava",
+  "mytí vlasů Opava",
+  "péče o pokožku hlavy",
+  "Sarya Head Spa",
+  "Sarya",
+  "Ostrožná",
+  "Opava",
+  "Davines",
+  "keratin Opava",
+  "salon Opava",
+];
 
 export const viewport: Viewport = {
   themeColor: "#34443a",
@@ -31,12 +48,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Head Spa Opava | Sarya Head Spa",
+    default: title,
     template: `%s | ${site.name}`,
   },
   description,
+  keywords,
+  authors: [{ name: site.operatorName || site.legalName }],
+  creator: site.operatorName || site.legalName,
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   icons: {
     icon: [
       { url: `${basePath}/favicon.ico`, sizes: "any" },
@@ -76,9 +100,8 @@ export const metadata: Metadata = {
   },
   manifest: `${basePath}/site.webmanifest`,
   openGraph: {
-    title: "Head Spa Opava | Sarya Head Spa",
-    description:
-      "Head spa na Ostrožné 8 v Opavě. Basic, Relax, Man a Keratin Repair. Rezervace přes Notino.",
+    title,
+    description,
     url: site.url,
     locale: "cs_CZ",
     type: "website",
@@ -93,6 +116,18 @@ export const metadata: Metadata = {
           },
         ]
       : undefined,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ogImage ? [ogImage.src] : undefined,
+  },
+  other: {
+    "geo.region": "CZ-MO",
+    "geo.placename": "Opava",
+    "geo.position": "49.9378825;17.9026238",
+    ICBM: "49.9378825, 17.9026238",
   },
 };
 
@@ -111,7 +146,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');try{if(sessionStorage.getItem('sarya_has_loaded')){document.documentElement.dataset.saryaLoaded='1'}else if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('preloader-pending')}}catch(e){}",
+              "if(location.protocol==='http:'&&/^(www\\.)?sarya-headspa\\.cz$/i.test(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash)}document.documentElement.classList.add('js');try{if(sessionStorage.getItem('sarya_has_loaded')){document.documentElement.dataset.saryaLoaded='1'}else if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('preloader-pending')}}catch(e){}",
           }}
         />
       </head>
