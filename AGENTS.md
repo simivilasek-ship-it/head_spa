@@ -13,9 +13,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 Sarya Head Spa — landing page (Next.js + TypeScript + Tailwind).
 
 - Styl: zemité tóny podle FB fotek + kruhové logo
-- Obsah: `src/lib/site.ts`
+- Obsah: `src/lib/content.ts`
 - Assety: `public/images`, `public/logo.svg`, reference v `design/`
 - Rezervace: `NEXT_PUBLIC_BOOKING_URL` (viz `.env.example`)
+- Produkce: GitHub Pages + doména `sarya-headspa.cz` (`public/CNAME`, deploy bez `GITHUB_PAGES`)
 
 ```bash
 npm run dev

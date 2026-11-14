@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
-/** Project Pages URL: https://<user>.github.io/head_spa/ */
+/**
+ * Produkce = vlastní doména sarya-headspa.cz (GitHub Pages + CNAME).
+ * BasePath `/head_spa` jen když GITHUB_PAGES=true (náhled na *.github.io/head_spa/).
+ */
 const repo = "head_spa";
-const isGithubPages = process.env.GITHUB_PAGES === "true";
-const basePath = isGithubPages ? `/${repo}` : "";
+const isGithubPagesPreview = process.env.GITHUB_PAGES === "true";
+const basePath = isGithubPagesPreview ? `/${repo}` : "";
 
 const nextConfig: NextConfig = {
   output: "export",

@@ -1,6 +1,6 @@
 /**
- * Static export na GitHub Pages potřebuje prefixovat cesty k obrázkům basePath.
- * (next/image + unoptimized jinak generuje `/images/...` bez `/head_spa`.)
+ * Prefixuje cesty k obrázkům o NEXT_PUBLIC_BASE_PATH (jen když je nastavený).
+ * Na sarya-headspa.cz je basePath prázdný.
  */
 export default function imageLoader({
   src,

@@ -27,12 +27,16 @@ jobs:
         run: npm ci
       - name: Build static export
         env:
-          GITHUB_PAGES: "true"
-          # Veřejná URL salonu. Stejná hodnota je i fallback v src/lib/content.ts.
+          # Bez basePath — site běží na https://sarya-headspa.cz (public/CNAME).
+          # Pro náhled na *.github.io/head_spa/ by bylo GITHUB_PAGES=true.
           NEXT_PUBLIC_BOOKING_URL: https://www.notino.cz/salony/sarya-head-spa_1/
         run: npm run build
       - name: Disable Jekyll
         run: touch out/.nojekyll
+      - name: Ensure CNAME for custom domain
+        run: |
+          test -f out/CNAME
+          echo "CNAME: $(cat out/CNAME)"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
