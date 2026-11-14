@@ -69,7 +69,7 @@ export const copy = {
     title: "Head spa v Opavě",
     highlights: ["Ostrožná 8, Opava", "Rezervace přes Notino", "Kosmetika Davines"],
     subtitle:
-      "Malý salon u centra. Umyju vám vlasy, masíruju pokožku hlavy a nechám vás na chvíli vypnout. 60 až 100 minut, podle procedury.",
+      "V mém salonu v centru Opavy vás čeká profesionální péče o vlasy a pokožku hlavy, uvolňující masáž a příjemné prostředí, ve kterém si dopřejete chvíle klidu a odpočinku.",
     ctaPrimary: "Objednat se",
     ctaSecondary: "Ceník",
   },
@@ -111,12 +111,13 @@ export const copy = {
   gallery: {
     kicker: "Salon",
     title: "Jak to u nás vypadá",
-    subtitle: "Ostrožná 8: lehátko, umyvadlo, nic velkého.",
+    subtitle:
+      "Ostrožná 8, klidné a útulné místo, kde se péče o vlasy mění v příjemný zážitek.",
   },
   voucher: {
     kicker: "Dárek",
     title: "Poukazy",
-    body: "Stačí zavolat. Domluvíme hodnotu nebo konkrétní proceduru a připravím poukaz.",
+    body: "Dárkový poukaz si můžete vyzvednout osobně v salonu po předchozí domluvě, případně vám jej ráda zašlu v elektronické podobě. Poukaz vystavím podle vašeho přání buď na konkrétní proceduru, nebo na vámi zvolenou finanční částku. Potěšte své blízké dárkem v podobě chvíle odpočinku a péče o sebe.",
     cta: "Zavolat",
   },
   faq: {
@@ -138,31 +139,65 @@ export const procedures = [
     name: "Sarya Basic",
     duration: "60 min",
     price: "1 100 Kč",
-    description:
-      "Mytí Davines, masáž pokožky hlavy a kúra. Na konci vlasy vysuším.",
+    note: "Pouze pro vlasy maximálně po ramena.",
+    description: "Péče o pokožku hlavy a vlasy s masáží a parní lázní.",
+    steps: [
+      "Posouzení stavu pokožky hlavy mikrokamerou a volba vhodné péče na míru",
+      "Čištění pokožky hlavy",
+      "Relaxační mytí šamponem dle typu pokožky hlavy",
+      "Masáž hlavy, maska, parní lázeň",
+      "Vysušení vlasů",
+    ],
     bookingUrl: "",
   },
   {
     name: "Sarya Relax",
     duration: "90 min",
     price: "1 450 Kč",
+    note: "",
     description:
-      "Delší verze: kamera na pokožku, čištění, masáž a napařování.",
+      "Delší rituál s masáží hlavy, dekoltu a šíje a prodlouženou péčí.",
+    steps: [
+      "Posouzení stavu pokožky hlavy mikrokamerou a volba vhodné péče na míru",
+      "Uvolňující masáž hlavy, dekoltu a šíje",
+      "Čištění pokožky hlavy",
+      "2× relaxační mytí šamponem dle typu pokožky hlavy",
+      "Prodloužená masáž hlavy, maska, parní lázeň",
+      "Vysušení vlasů",
+    ],
     bookingUrl: "",
   },
   {
     name: "Sarya Man",
     duration: "60 min",
     price: "900 Kč",
-    description:
-      "Pro muže a kratší vlasy. Mytí, masáž a péče podle stavu vlasů.",
+    note: "",
+    description: "Head spa pro muže a kratší vlasy.",
+    steps: [
+      "Uvolňující masáž hlavy",
+      "Čištění pokožky hlavy",
+      "Relaxační mytí šamponem a masáž",
+      "Vysušení vlasů",
+    ],
     bookingUrl: "",
   },
   {
     name: "Sarya Keratin Repair",
     duration: "100 min",
     price: "1 800 Kč",
-    description: "Keratin na poškozené vlasy. Hebčí vlasy, víc lesku.",
+    note: "",
+    description: "Vyživující keratinová rekonstrukce pro poškozené vlasy.",
+    steps: [
+      "Posouzení stavu pokožky hlavy mikrokamerou a volba vhodné péče na míru",
+      "Uvolňující masáž hlavy, dekoltu a šíje",
+      "Čištění pokožky hlavy",
+      "Relaxační mytí vyživujícím šamponem s keratinem",
+      "Nanesení vyživující keratinové rekonstrukce a keratin booster",
+      "Parní lázeň",
+      "Posilující keratinový kondicionér nebo maska (dle typu vlasů)",
+      "Posilující bezoplachová keratinová kúra",
+      "Vysušení vlasů",
+    ],
     bookingUrl: "",
   },
 ] as const;
@@ -188,32 +223,36 @@ export const visitSteps = [
   {
     step: "1",
     title: "Rezervace",
-    text: "Vyberete proceduru a termín na Notinu. Když si nejste jistí, zavolejte.",
+    text: "Vyberte si proceduru a termín na Notinu. Když si nebudete jistí, pište nebo volejte.",
   },
   {
     step: "2",
     title: "Péče",
-    text: "Lehnete si. Mytí, práce s pokožkou, masáž. Když něco nebude sedět, stačí říct.",
+    text: "Postarám se o vaši pokožku hlavy i vlasy pomocí pečujících rituálů, mytí a uvolňující masáže.",
   },
   {
     step: "3",
     title: "Hotovo",
-    text: "Vlasy vysuším, krátce to uzavřeme a máte hotovo.",
+    text: "Vlasy šetrně vysuším a upravím tak, abyste odcházeli s pocitem svěžesti, lehkosti a krásně ošetřenými vlasy.",
   },
 ] as const;
 
 export const faqs = [
   {
     q: "Jak dlouho to trvá?",
-    a: "Basic a Man 60 minut, Relax 90, Keratin Repair 100.",
+    a: "Basic a Man 60 minut, Relax 90, Keratin Repair 100. V čase procedury je započítán i čas na vysušení vlasů.",
+  },
+  {
+    q: "Musím si před procedurou umývat vlasy?",
+    a: "Nemusíte. Naopak doporučuji si vlasy před procedurou nemýt alespoň 24 hodin. Lépe tak posoudím stav pokožky hlavy.",
+  },
+  {
+    q: "Mám citlivou pokožku. Vadí to?",
+    a: "Před procedurou probereme stav vaší pokožky. Péči přizpůsobím tak, aby pro vás byla co nejšetrnější a příjemná. Pokud je pokožka výrazně podrážděná, nebo vykazuje známky zánětu, doporučím proceduru odložit.",
   },
   {
     q: "V čem mám přijít?",
     a: "V čemkoli pohodlném. Vlasy speciálně upravovat nemusíte.",
-  },
-  {
-    q: "Mám citlivou pokožku. Vadí to?",
-    a: "Napište to předem. Používám Davines a postup upravím.",
   },
   {
     q: "Můžu přijít i jako muž?",

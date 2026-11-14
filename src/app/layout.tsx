@@ -23,7 +23,7 @@ const serif = Gelasio({
 
 const title = "Head Spa Opava | Sarya Head Spa";
 const description =
-  "Head spa Opava na Ostrožné 8. Mytí vlasů, masáž hlavy a péče o pokožku. Headspa v centru Opavy, rezervace přes Notino.";
+  "Head spa v centru Opavy na Ostrožné 8. Profesionální péče o vlasy a pokožku hlavy, uvolňující masáž a klidné prostředí. Rezervace přes Notino.";
 
 const keywords = [
   "head spa Opava",

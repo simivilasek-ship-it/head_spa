@@ -5,6 +5,8 @@ export type ProcedureCardProps = {
   duration: string;
   price: string;
   description: string;
+  note?: string;
+  steps?: readonly string[];
   featured?: boolean;
   /** Prázdné = fallback na stránku salonu na Notinu. */
   bookingUrl?: string;
@@ -15,6 +17,8 @@ export function ProcedureCard({
   duration,
   price,
   description,
+  note,
+  steps = [],
   featured = false,
   bookingUrl = "",
 }: ProcedureCardProps) {
@@ -44,9 +48,28 @@ export function ProcedureCard({
         </p>
       </div>
 
-      <p className="mt-3.5 flex-1 text-[var(--text-sm)] leading-7 text-ink/70">
+      {note ? (
+        <p className="mt-2 text-[var(--text-xs)] font-medium leading-5 text-sage">
+          {note}
+        </p>
+      ) : null}
+
+      <p className="mt-3.5 text-[var(--text-sm)] leading-7 text-ink/70">
         {description}
       </p>
+
+      {steps.length > 0 ? (
+        <ul className="mt-4 flex-1 space-y-2 text-[var(--text-sm)] leading-6 text-ink/75">
+          {steps.map((step) => (
+            <li key={step} className="flex gap-2">
+              <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-sage" />
+              <span>{step}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="flex-1" />
+      )}
 
       <div className="mt-auto pt-7">
         <BookingButton className="w-full" href={bookingUrl} />

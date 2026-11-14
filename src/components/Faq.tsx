@@ -16,7 +16,7 @@ export function Faq() {
         title={copy.faq.title}
       />
       <div className="section-stack divide-y divide-forest/10 border-y border-forest/10">
-        {faqs.slice(0, 5).map((item, index) => {
+        {faqs.map((item, index) => {
           const expanded = openIndex === index;
           const panelId = `${baseId}-panel-${index}`;
           const buttonId = `${baseId}-button-${index}`;
