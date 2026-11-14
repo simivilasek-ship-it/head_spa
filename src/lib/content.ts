@@ -78,11 +78,13 @@ export const copy = {
     title: "O salonu",
     greeting: "Ahoj, já jsem Šárka.",
     paragraphs: [
-      "Sarya Head Spa jsem založila sama. Chtěla jsem mít vlastní místo, kam se ženy zastaví nejen kvůli vlasům, ale i proto, že potřebují hodinu klidu.",
-      "Chodí i muži. Pro kratší vlasy mám Sarya Man.",
-      "Sama mám ráda, když můžu na chvíli vypnout. Proto to tady dělám tak, jak bych to chtěla sama: v klidu, bez spěchu a s péčí, která sedí na vlasy i na pokožku hlavy.",
-      "Pořád se učím. Záleží mi na tom, abyste odešli s lepšími vlasy a lehčí hlavou.",
-      "Budu se těšit.",
+      "Jsem zakladatelkou Sarya Head Spa a ráda bych vám trochu přiblížila, jak to celé začalo.",
+      "Vždycky jsem si přála vytvořit něco vlastního. Místo, které bude mít příjemnou atmosféru a kam budou ženy přicházet nejen za péčí o své vlasy, ale také za odpočinkem a chvílí jen pro sebe.",
+      "Stejně ráda tu vítám i muže. Sarya Man je péče uzpůsobená kratším vlasům a pánskému tempu.",
+      "Sama mám velmi ráda wellness rituály, chvíle klidu a vše, co pomáhá zpomalit a na chvíli vypnout od každodenních povinností. Právě tato osobní záliba mě přivedla k myšlence vytvořit Sarya Head Spa.",
+      "Chtěla jsem spojit to, co mám sama ráda, s péčí o vlasy a pokožku hlavy. Vytvořit prostor, kde se budete cítit příjemně, uvolněně a kde si budete moci dopřát péči, kterou si zasloužíte.",
+      "Je to pro mě nová profesní cesta, na které se neustále učím, vzdělávám a posouvám dál. Záleží mi na tom, aby každá návštěva byla příjemným zážitkem a abyste odcházely nejen s pocitem dobře opečovaných vlasů, ale také s lehčí hlavou a úsměvem.",
+      "Budu se těšit na vaši návštěvu.",
     ],
   },
   procedures: {

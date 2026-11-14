@@ -327,30 +327,23 @@ a {
     box-shadow: 0 16px 40px color-mix(in srgb, var(--forest) 11%, transparent);
   }
 
-  /* gradient: fotka vidět, text vlevo/dole s dostatečným kontrastem */
+  /* zelený filtr ~85 % — jako dřív na lokálu / github.io */
   .hero-overlay {
-    background:
-      linear-gradient(
-        to right,
-        rgb(var(--hero-green) / 0.78) 0%,
-        rgb(var(--hero-green) / 0.42) 42%,
-        rgb(var(--hero-green) / 0.18) 72%,
-        rgb(var(--hero-green) / 0.08) 100%
-      ),
-      linear-gradient(
-        to top,
-        rgb(20 28 24 / 0.72) 0%,
-        rgb(20 28 24 / 0.28) 38%,
-        transparent 68%
-      );
+    background: rgb(var(--hero-green) / 0.85);
   }
 
   .hero-photo {
-    filter: none;
+    filter: brightness(0.92) contrast(0.96) saturate(0.95);
   }
 
   .hero-text-scrim {
-    display: none;
+    background: linear-gradient(
+      to top,
+      rgb(20 28 24 / 0.88) 0%,
+      rgb(20 28 24 / 0.58) 22%,
+      rgb(20 28 24 / 0.22) 48%,
+      transparent 68%
+    );
   }
 
   .hero-subtitle {
