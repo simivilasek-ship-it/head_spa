@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
  * Feature flag: vlastní kurzor (tečka + kroužek).
  * Vypnout = false, pokud ruší čitelnost textu.
  */
-export const ENABLE_CUSTOM_CURSOR = false;
+export const ENABLE_CUSTOM_CURSOR = true;
 
 function canUseCustomCursor() {
   if (!ENABLE_CUSTOM_CURSOR) return false;

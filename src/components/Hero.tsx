@@ -1,6 +1,6 @@
 import { BookingButton } from "@/components/Button";
 import { SiteImage } from "@/components/SiteImage";
-import { copy } from "@/lib/content";
+import { copy, facts } from "@/lib/content";
 import { images } from "@/lib/images";
 
 export function Hero() {
@@ -45,6 +45,29 @@ export function Hero() {
             {copy.hero.ctaSecondary} →
           </a>
         </div>
+
+        <ul
+          aria-label="Základní informace"
+          className="hero-enter hero-enter-5 mt-10 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8"
+        >
+          {facts.map((item) => (
+            <li
+              key={item.value}
+              className="flex items-center gap-2.5 text-[var(--text-sm)] font-medium text-cream drop-shadow-[0_1px_8px_rgba(20,28,24,0.55)]"
+            >
+              <span
+                aria-hidden
+                className="flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full border border-cream/85 text-[9px] leading-none text-cream"
+              >
+                ✓
+              </span>
+              <span className="nums leading-none tracking-[0.01em]">
+                {item.value}
+                <span className="text-cream/90"> · {item.label}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <a

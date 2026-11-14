@@ -9,7 +9,6 @@ import { Procedures } from "@/components/Procedures";
 import { Process } from "@/components/Process";
 import { Reviews } from "@/components/Reviews";
 import { SectionDivider } from "@/components/SectionDivider";
-import { TrustStrip } from "@/components/TrustStrip";
 import { Voucher } from "@/components/Voucher";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
@@ -19,7 +18,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <TrustStrip />
         <Procedures />
         <Process />
         <SectionDivider from="mist" to="forest" />
