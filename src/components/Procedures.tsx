@@ -2,6 +2,7 @@ import { ProcedureCard } from "@/components/ProcedureCard";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeader } from "@/components/SectionHeader";
 import { copy, procedures } from "@/lib/content";
+import { images } from "@/lib/images";
 
 export function Procedures() {
   return (
@@ -20,20 +21,28 @@ export function Procedures() {
         />
 
         <ul className="section-stack grid items-stretch gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-6">
-          {procedures.map((item, index) => (
-            <li key={item.name} className="h-full">
-              <Reveal index={index} className="h-full">
-                <ProcedureCard
-                  name={item.name}
-                  duration={item.duration}
-                  price={item.price}
-                  description={item.description}
-                  bookingUrl={item.bookingUrl}
-                  featured={item.name === "Sarya Basic"}
-                />
-              </Reveal>
-            </li>
-          ))}
+          {procedures.map((item, index) => {
+            const image =
+              item.name in images.procedures
+                ? images.procedures[item.name as keyof typeof images.procedures]
+                : null;
+            if (!image) return null;
+            return (
+              <li key={item.name} className="h-full">
+                <Reveal index={index} className="h-full">
+                  <ProcedureCard
+                    name={item.name}
+                    duration={item.duration}
+                    price={item.price}
+                    description={item.description}
+                    bookingUrl={item.bookingUrl}
+                    image={image}
+                    featured={item.name === "Sarya Basic"}
+                  />
+                </Reveal>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
