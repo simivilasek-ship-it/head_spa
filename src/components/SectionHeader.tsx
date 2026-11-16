@@ -2,10 +2,14 @@ type SectionHeaderProps = {
   id: string;
   kicker: string;
   title: string;
-  subtitle?: string;
+  subtitle?: string | readonly string[];
   center?: boolean;
   dark?: boolean;
 };
+
+function subtitleLines(subtitle: string | readonly string[]) {
+  return typeof subtitle === "string" ? [subtitle] : subtitle;
+}
 
 export function SectionHeader({
   id,
@@ -27,7 +31,12 @@ export function SectionHeader({
             center ? "mx-auto max-w-xl" : "max-w-xl"
           } ${dark ? "text-cream/80" : "text-ink/70"}`}
         >
-          {subtitle}
+          {subtitleLines(subtitle).map((line, index) => (
+            <span key={index}>
+              {index > 0 ? <br /> : null}
+              {line}
+            </span>
+          ))}
         </p>
       ) : null}
     </header>

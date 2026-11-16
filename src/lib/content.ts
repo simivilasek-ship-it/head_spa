@@ -92,8 +92,10 @@ export const copy = {
   procedures: {
     kicker: "Ceník",
     title: "Procedury",
-    subtitle:
-      "Čtyři varianty. Liší se délkou a tím, co v nich je. Termín berete přes Notino.",
+    subtitle: [
+      "Každá péče je trochu jiná. Vyberte si tu, která nejlépe odpovídá vašim potřebám.",
+      "Termín si jednoduše rezervujete online.",
+    ],
     cta: "Objednat se",
   },
   cosmetics: {
@@ -105,8 +107,11 @@ export const copy = {
   },
   reviews: {
     kicker: "Google",
-    title: "Recenze",
-    subtitle: "Co napsali lidé na Google. Celé texty jsou tam.",
+    title: "Zkušenosti našich zákaznic",
+    subtitle: [
+      "Nejlepší představu o péči v Sarya vám dají zkušenosti těch, které ji už vyzkoušely.",
+      "Přečtěte si jejich hodnocení na Google.",
+    ],
     ctaRead: "Otevřít Google",
     ctaWrite: "Napsat recenzi",
   },

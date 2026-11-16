@@ -127,9 +127,6 @@ export function Reviews() {
           <Reveal delay={80}>
             <div className="section-stack mx-auto flex max-w-md flex-col items-center text-center">
               <StarRating rating={null} size="h-7 w-7" />
-              <p className="mt-5 text-[var(--text-base)] text-ink/75">
-                Recenze jsou na Google. Otevřete si je tam.
-              </p>
               <div className="mt-10 flex w-full justify-center">
                 <GoogleButtons />
               </div>
